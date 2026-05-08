@@ -1,0 +1,87 @@
+<navigation-bar title="养生查" back="{{false}}" color="#2D3436" background="#F7F5F2"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="home-page">
+    <view class="constitution-banner" wx:if="{{constitution}}" bindtap="goQuiz">
+      <view class="banner-left">
+        <text class="banner-icon">{{constitution.icon}}</text>
+        <view class="banner-info">
+          <text class="banner-type">{{constitution.name}}</text>
+          <text class="banner-desc">{{constitution.description}}</text>
+        </view>
+      </view>
+      <text class="banner-arrow">›</text>
+    </view>
+
+    <view class="search-bar" bindtap="goSearch">
+      <view class="search-input">
+        <text class="search-icon">🔍</text>
+        <text class="search-placeholder">搜索食材、功效、别名…</text>
+      </view>
+    </view>
+
+    <view class="category-section">
+      <view class="section-header">
+        <text class="section-title">按功效查找</text>
+      </view>
+      <scroll-view class="category-scroll" scroll-x>
+        <view class="category-list">
+          <view class="category-item" wx:for="{{effectCategories}}" wx:key="index"
+                bindtap="goCategory" data-type="effect" data-value="{{item}}">
+            <view class="category-dot" style="background: {{categoryColors[index % categoryColors.length]}}"></view>
+            <text class="category-text">{{item}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="nature-section">
+      <view class="section-header">
+        <text class="section-title">按性味查找</text>
+      </view>
+      <view class="nature-list">
+        <view class="nature-item" wx:for="{{natureTypes}}" wx:key="index"
+              bindtap="goCategory" data-type="nature" data-value="{{item}}">
+          <text class="nature-text" style="color: {{natureColors[index]}}">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="hot-section">
+      <view class="section-header">
+        <text class="section-title">热门食材</text>
+        <text class="section-more" bindtap="goSearch">查看全部 ›</text>
+      </view>
+      <view class="hot-grid">
+        <view class="hot-item" wx:for="{{hotIngredients}}" wx:key="id"
+              bindtap="goDetail" data-id="{{item.id}}">
+          <image class="hot-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <text class="hot-name">{{item.name}}</text>
+          <text class="hot-effect">{{item.effectCategory}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-section">
+      <view class="action-card match-card" bindtap="goMatch">
+        <view class="action-icon">🫖</view>
+        <view class="action-info">
+          <text class="action-title">搭配自检</text>
+          <text class="action-desc">检测你的养生搭配是否合理</text>
+        </view>
+        <text class="action-arrow">›</text>
+      </view>
+      <view class="action-card quiz-card" bindtap="goQuiz">
+        <view class="action-icon">📋</view>
+        <view class="action-info">
+          <text class="action-title">体质自测</text>
+          <text class="action-desc">8道题测出你的中医体质</text>
+        </view>
+        <text class="action-arrow">›</text>
+      </view>
+    </view>
+
+    <view class="disclaimer">
+      本小程序仅供养生知识参考，不构成医疗建议
+    </view>
+  </view>
+</scroll-view>

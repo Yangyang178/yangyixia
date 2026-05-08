@@ -1,0 +1,65 @@
+<navigation-bar title="体质自测" back="{{false}}" color="#2D3436" background="#F7F5F2"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="quiz-page">
+    <view class="quiz-header" wx:if="{{!started}}">
+      <text class="quiz-icon">📋</text>
+      <text class="quiz-title">中医体质自测</text>
+      <text class="quiz-desc">8道简单场景题，帮你了解自己的体质倾向</text>
+      <view class="quiz-notice">
+        <text class="notice-text">⚠️ 本测试仅供娱乐参考，不构成医疗诊断</text>
+      </view>
+      <view class="btn-primary start-btn" bindtap="startQuiz">开始测试</view>
+    </view>
+
+    <view class="quiz-header" wx:if="{{started && completed}}">
+      <text class="quiz-icon">🎉</text>
+      <text class="quiz-title">测试完成！</text>
+      <text class="quiz-desc">快来看看你的体质结果吧</text>
+      <view class="btn-primary start-btn" bindtap="viewResult">查看结果</view>
+    </view>
+
+    <view class="quiz-body" wx:if="{{started && !completed}}">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progress}}%"></view>
+      </view>
+      <text class="progress-text">{{currentIndex + 1}} / {{questions.length}}</text>
+
+      <view class="question-card card">
+        <text class="question-text">{{currentQuestion.question}}</text>
+        <view class="options-list">
+          <view class="option-item {{selectedOption === index ? 'selected' : ''}}"
+                wx:for="{{currentQuestion.options}}" wx:key="index"
+                bindtap="selectOption" data-index="{{index}}">
+            <view class="option-radio">
+              <view class="radio-inner" wx:if="{{selectedOption === index}}"></view>
+            </view>
+            <text class="option-text">{{item.text}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="quiz-actions">
+        <view class="btn-outline prev-btn" wx:if="{{currentIndex > 0}}" bindtap="prevQuestion">上一题</view>
+        <view class="btn-primary next-btn" bindtap="nextQuestion">
+          {{currentIndex === questions.length - 1 ? '完成测试' : '下一题'}}
+        </view>
+      </view>
+    </view>
+
+    <view class="existing-result" wx:if="{{existingConstitution && !started}}">
+      <view class="card">
+        <view class="card-title">上次测试结果</view>
+        <view class="existing-info">
+          <text class="existing-icon">{{existingConstitution.icon}}</text>
+          <text class="existing-name">{{existingConstitution.name}}</text>
+        </view>
+        <text class="existing-desc">{{existingConstitution.description}}</text>
+        <view class="btn-outline retake-btn" bindtap="startQuiz">重新测试</view>
+      </view>
+    </view>
+
+    <view class="disclaimer">
+      本测试仅供娱乐参考，不构成医疗诊断建议
+    </view>
+  </view>
+</scroll-view>

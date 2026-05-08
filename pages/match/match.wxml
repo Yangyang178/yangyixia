@@ -1,0 +1,108 @@
+<navigation-bar title="搭配自检" back="{{false}}" color="#2D3436" background="#F7F5F2"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="match-page">
+    <view class="intro-card card">
+      <text class="intro-icon">🫖</text>
+      <text class="intro-title">选择2-5种食材，检测搭配是否合理</text>
+      <text class="intro-desc">模拟"今天想泡这个茶"的操作</text>
+    </view>
+
+    <view class="selected-section" wx:if="{{selectedIngredients.length > 0}}">
+      <view class="section-header">
+        <text class="section-title">已选食材（{{selectedIngredients.length}}/5）</text>
+        <text class="clear-btn" bindtap="clearAll">清空</text>
+      </view>
+      <scroll-view class="selected-scroll" scroll-x>
+        <view class="selected-list">
+          <view class="selected-item" wx:for="{{selectedIngredients}}" wx:key="id">
+            <image class="selected-image" src="{{item.image}}" mode="aspectFill"></image>
+            <text class="selected-name">{{item.name}}</text>
+            <view class="selected-remove" bindtap="removeIngredient" data-index="{{index}}">✕</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="search-section">
+      <view class="search-input-wrap">
+        <text class="search-icon">🔍</text>
+        <input class="search-input" placeholder="搜索食材添加…"
+               value="{{keyword}}" bindinput="onInput" />
+      </view>
+    </view>
+
+    <view class="add-list" wx:if="{{searchResults.length > 0 && keyword}}">
+      <view class="add-item" wx:for="{{searchResults}}" wx:key="id"
+            bindtap="addIngredient" data-id="{{item.id}}">
+        <image class="add-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+        <view class="add-info">
+          <text class="add-name">{{item.name}}</text>
+          <text class="add-effect">{{item.effectCategory}}</text>
+        </view>
+        <text class="add-btn" wx:if="{{selectedIds.indexOf(item.id) === -1}}">+</text>
+        <text class="add-btn added" wx:else>已选</text>
+      </view>
+    </view>
+
+    <view class="quick-add" wx:if="{{!keyword}}">
+      <view class="section-header">
+        <text class="section-title">常用食材</text>
+      </view>
+      <view class="quick-grid">
+        <view class="quick-item {{selectedIds.indexOf(item.id) > -1 ? 'selected' : ''}}"
+              wx:for="{{commonIngredients}}" wx:key="id"
+              bindtap="addIngredient" data-id="{{item.id}}">
+          <image class="quick-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <text class="quick-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="check-btn-wrap" wx:if="{{selectedIngredients.length >= 2}}">
+      <view class="btn-primary check-btn" bindtap="checkMatch">开始检测</view>
+    </view>
+
+    <view class="result-section" wx:if="{{matchResult}}">
+      <view class="result-card card" wx:if="{{matchResult.good.length > 0}}">
+        <view class="card-title success-title">✅ 适宜搭配</view>
+        <view class="result-item" wx:for="{{matchResult.good}}" wx:key="index">
+          <view class="result-pair">{{item.ingredientA}} + {{item.ingredientB}}</view>
+          <view class="result-reason">{{item.reason}}</view>
+          <view class="result-source">出处：{{item.source}}</view>
+        </view>
+      </view>
+
+      <view class="result-card card" wx:if="{{matchResult.caution.length > 0}}">
+        <view class="card-title caution-title">⚠️ 需谨慎</view>
+        <view class="result-item" wx:for="{{matchResult.caution}}" wx:key="index">
+          <view class="result-pair">{{item.ingredientA}} + {{item.ingredientB}}</view>
+          <view class="result-reason">{{item.reason}}</view>
+          <view class="result-source">出处：{{item.source}}</view>
+        </view>
+      </view>
+
+      <view class="result-card card" wx:if="{{matchResult.bad.length > 0}}">
+        <view class="card-title danger-title">❌ 不宜搭配</view>
+        <view class="result-item" wx:for="{{matchResult.bad}}" wx:key="index">
+          <view class="result-pair">{{item.ingredientA}} + {{item.ingredientB}}</view>
+          <view class="result-reason">{{item.reason}}</view>
+          <view class="result-source">出处：{{item.source}}</view>
+        </view>
+      </view>
+
+      <view class="result-card card" wx:if="{{matchResult.good.length === 0 && matchResult.bad.length === 0 && matchResult.caution.length === 0}}">
+        <view class="card-title">📋 检测结果</view>
+        <text class="no-rule-text">所选食材暂无明确配伍规则记录，建议适量搭配，注意个人体质反应。</text>
+      </view>
+
+      <view class="constitution-match card" wx:if="{{constitutionMatch}}">
+        <view class="card-title">📋 体质适配</view>
+        <text class="constitution-match-text">{{constitutionMatch}}</text>
+      </view>
+    </view>
+
+    <view class="disclaimer">
+      本小程序仅供养生知识参考，不构成医疗建议
+    </view>
+  </view>
+</scroll-view>

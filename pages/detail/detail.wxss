@@ -1,0 +1,187 @@
+.detail-page {
+  padding: 20rpx 28rpx 40rpx;
+}
+
+.constitution-tip {
+  display: flex;
+  align-items: center;
+  background: var(--primary-bg);
+  border-radius: 16rpx;
+  padding: 16rpx 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.tip-icon {
+  font-size: 28rpx;
+  margin-right: 12rpx;
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.hero-card {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.hero-image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 16rpx;
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.hero-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-name-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.hero-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-right: 16rpx;
+}
+
+.hero-nature {
+  font-size: 22rpx;
+  color: var(--accent-dark);
+  background: var(--accent-light);
+  padding: 4rpx 14rpx;
+  border-radius: 12rpx;
+}
+
+.hero-aliases {
+  font-size: 22rpx;
+  color: var(--text-hint);
+  margin-bottom: 8rpx;
+}
+
+.hero-summary {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 12rpx;
+  line-height: 1.5;
+}
+
+.hero-effects {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info-card {
+  margin-bottom: 20rpx;
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 8rpx 0;
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: var(--text-hint);
+  width: 150rpx;
+  flex-shrink: 0;
+}
+
+.info-value {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.constitution-card {
+  margin-bottom: 20rpx;
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16rpx;
+}
+
+.constitution-row {
+  margin-bottom: 16rpx;
+}
+
+.const-label {
+  font-size: 24rpx;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.const-label.suitable {
+  color: var(--success);
+}
+
+.const-label.caution {
+  color: var(--danger);
+}
+
+.const-tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.warning-card {
+  margin-bottom: 20rpx;
+  border-left: 6rpx solid var(--danger);
+}
+
+.warning-text {
+  font-size: 26rpx;
+  color: var(--danger);
+  line-height: 1.6;
+}
+
+.pairing-card {
+  margin-bottom: 20rpx;
+}
+
+.pairing-item {
+  background: var(--bg-grey);
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 12rpx;
+}
+
+.pairing-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 6rpx;
+}
+
+.pairing-desc {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.action-btns {
+  margin: 32rpx 0 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.action-btns .btn-primary {
+  width: 100%;
+}
+
+.nav-fav {
+  padding: 8rpx 16rpx;
+  font-size: 32rpx;
+}

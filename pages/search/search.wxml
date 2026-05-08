@@ -1,0 +1,77 @@
+<navigation-bar title="搜索" back="{{true}}" color="#2D3436" background="#F7F5F2"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="search-page">
+    <view class="search-box">
+      <view class="search-input-wrap">
+        <text class="search-icon">🔍</text>
+        <input class="search-input" placeholder="搜索食材、功效、别名…"
+               value="{{keyword}}" bindinput="onInput" bindconfirm="onSearch"
+               focus="{{autoFocus}}" confirm-type="search" />
+        <text class="search-clear" wx:if="{{keyword}}" bindtap="clearInput">✕</text>
+      </view>
+    </view>
+
+    <view class="filter-tabs" wx:if="{{!keyword && !filterType}}">
+      <view class="filter-tab {{activeTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">全部</view>
+      <view class="filter-tab {{activeTab === 'effect' ? 'active' : ''}}" bindtap="switchTab" data-tab="effect">按功效</view>
+      <view class="filter-tab {{activeTab === 'nature' ? 'active' : ''}}" bindtap="switchTab" data-tab="nature">按性味</view>
+      <view class="filter-tab {{activeTab === 'form' ? 'active' : ''}}" bindtap="switchTab" data-tab="form">按形态</view>
+    </view>
+
+    <view class="filter-content" wx:if="{{!keyword && !filterType && activeTab !== 'all'}}">
+      <view class="filter-list" wx:if="{{activeTab === 'effect'}}">
+        <view class="filter-item" wx:for="{{effectCategories}}" wx:key="index"
+              bindtap="applyFilter" data-type="effect" data-value="{{item}}">
+          <view class="filter-dot" style="background: {{categoryColors[index % categoryColors.length]}}"></view>
+          <text>{{item}}</text>
+        </view>
+      </view>
+      <view class="filter-list" wx:if="{{activeTab === 'nature'}}">
+        <view class="filter-item" wx:for="{{natureTypes}}" wx:key="index"
+              bindtap="applyFilter" data-type="nature" data-value="{{item}}">
+          <text class="nature-badge" style="color: {{natureColors[index]}}">{{item}}</text>
+          <text>{{item}}</text>
+        </view>
+      </view>
+      <view class="filter-list" wx:if="{{activeTab === 'form'}}">
+        <view class="filter-item" wx:for="{{formTypes}}" wx:key="index"
+              bindtap="applyFilter" data-type="form" data-value="{{item}}">
+          <text>{{formIcons[index] || '🌿'}} {{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="filter-active" wx:if="{{filterType && filterValue}}">
+      <view class="filter-tag">
+        <text>{{filterLabel}}：{{filterValue}}</text>
+        <text class="filter-remove" bindtap="removeFilter">✕</text>
+      </view>
+    </view>
+
+    <view class="result-list" wx:if="{{results.length > 0}}">
+      <view class="result-item" wx:for="{{results}}" wx:key="id"
+            bindtap="goDetail" data-id="{{item.id}}">
+        <image class="result-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+        <view class="result-info">
+          <view class="result-name-row">
+            <text class="result-name">{{item.name}}</text>
+            <text class="result-nature">{{item.nature}}</text>
+          </view>
+          <text class="result-summary">{{item.summary}}</text>
+          <view class="result-effects">
+            <text class="tag tag-primary" wx:for="{{item.effects}}" wx:for-item="eff" wx:key="index">{{eff}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{searched && results.length === 0}}">
+      <text class="empty-icon">🔍</text>
+      <text class="empty-text">没有找到相关食材，换个关键词试试</text>
+    </view>
+
+    <view class="disclaimer">
+      本小程序仅供养生知识参考，不构成医疗建议
+    </view>
+  </view>
+</scroll-view>

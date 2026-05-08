@@ -1,0 +1,169 @@
+.result-page {
+  padding: 0 28rpx 40rpx;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60rpx 40rpx 48rpx;
+  margin: -20rpx -28rpx 24rpx;
+  border-radius: 0 0 32rpx 32rpx;
+}
+
+.hero-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.hero-name {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8rpx;
+}
+
+.hero-desc {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16rpx;
+  line-height: 1.5;
+}
+
+.hero-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  font-size: 22rpx;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.features-card {
+  margin-bottom: 20rpx;
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16rpx;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12rpx;
+}
+
+.feature-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: var(--primary);
+  margin-top: 14rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.advice-card {
+  margin-bottom: 20rpx;
+  border-left: 6rpx solid var(--accent);
+}
+
+.advice-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.suitable-card {
+  margin-bottom: 20rpx;
+}
+
+.ingredient-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8rpx;
+}
+
+.ingredient-item {
+  width: calc(25% - 16rpx);
+  margin: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ingredient-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 16rpx;
+  margin-bottom: 8rpx;
+}
+
+.ingredient-name {
+  font-size: 22rpx;
+  color: var(--text-primary);
+}
+
+.caution-card {
+  margin-bottom: 20rpx;
+}
+
+.recipe-section {
+  margin-bottom: 20rpx;
+}
+
+.recipe-list {
+  margin-top: 16rpx;
+}
+
+.recipe-item {
+  margin-bottom: 12rpx;
+}
+
+.recipe-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 6rpx;
+}
+
+.recipe-effect {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.recipe-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.action-btns {
+  display: flex;
+  margin: 32rpx 0 20rpx;
+}
+
+.retake-btn {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.home-btn {
+  flex: 2;
+}

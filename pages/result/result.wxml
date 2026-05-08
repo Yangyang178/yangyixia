@@ -1,0 +1,70 @@
+<navigation-bar title="体质结果" back="{{true}}" color="#2D3436" background="#F7F5F2"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="result-page" wx:if="{{constitution}}">
+    <view class="hero-section" style="background: linear-gradient(135deg, {{constitution.color}}, {{constitution.color}}99);">
+      <text class="hero-icon">{{constitution.icon}}</text>
+      <text class="hero-name">{{constitution.name}}</text>
+      <text class="hero-desc">{{constitution.description}}</text>
+      <view class="hero-badge">仅供参考</view>
+    </view>
+
+    <view class="features-card card">
+      <view class="card-title">典型特征</view>
+      <view class="feature-list">
+        <view class="feature-item" wx:for="{{constitution.features}}" wx:key="index">
+          <view class="feature-dot"></view>
+          <text class="feature-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="advice-card card">
+      <view class="card-title">调养建议</view>
+      <text class="advice-text">{{constitution.advice}}</text>
+    </view>
+
+    <view class="suitable-card card">
+      <view class="card-title">✅ 适合吃的食材</view>
+      <view class="ingredient-grid">
+        <view class="ingredient-item" wx:for="{{suitableIngredients}}" wx:key="id"
+              bindtap="goDetail" data-id="{{item.id}}">
+          <image class="ingredient-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <text class="ingredient-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="caution-card card" wx:if="{{cautionIngredients.length > 0}}">
+      <view class="card-title">⚠️ 建议少碰的食材</view>
+      <view class="ingredient-grid">
+        <view class="ingredient-item" wx:for="{{cautionIngredients}}" wx:key="id"
+              bindtap="goDetail" data-id="{{item.id}}">
+          <image class="ingredient-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <text class="ingredient-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="recipe-section" wx:if="{{suitableRecipes.length > 0}}">
+      <view class="section-title">推荐茶饮汤方</view>
+      <view class="recipe-list">
+        <view class="recipe-item card" wx:for="{{suitableRecipes}}" wx:key="id">
+          <text class="recipe-name">{{item.name}}</text>
+          <text class="recipe-effect">{{item.effect}}</text>
+          <view class="recipe-ingredients">
+            <text class="tag tag-primary" wx:for="{{item.ingredients}}" wx:for-item="ing" wx:key="name">{{ing.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-btns">
+      <view class="btn-outline retake-btn" bindtap="retakeQuiz">重新测试</view>
+      <view class="btn-primary home-btn" bindtap="goHome">回到首页</view>
+    </view>
+
+    <view class="disclaimer">
+      本测试结果仅供娱乐参考，不构成医疗诊断建议。如有健康问题请咨询专业医师。
+    </view>
+  </view>
+</scroll-view>

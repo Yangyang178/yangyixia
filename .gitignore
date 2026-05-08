@@ -1,0 +1,6 @@
+node_modules/
+miniprogram_npm/
+.tea/
+.trae/
+.eslintrc.js
+project.private.config.json
