@@ -65,6 +65,9 @@
   height: 100rpx;
   border-radius: 16rpx;
   border: 3rpx solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .selected-name {
@@ -131,6 +134,9 @@
   height: 80rpx;
   border-radius: 12rpx;
   margin-right: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .add-info {
@@ -194,6 +200,9 @@
   height: 88rpx;
   border-radius: 12rpx;
   margin-bottom: 6rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .quick-name {

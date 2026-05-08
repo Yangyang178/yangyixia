@@ -111,6 +111,9 @@
   height: 120rpx;
   border-radius: 16rpx;
   margin-bottom: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ingredient-name {

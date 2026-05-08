@@ -161,6 +161,9 @@
   height: 140rpx;
   border-radius: 20rpx;
   margin-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hot-name {

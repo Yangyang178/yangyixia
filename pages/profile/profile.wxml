@@ -25,7 +25,7 @@
       <view class="fav-list" wx:if="{{favoriteItems.length > 0}}">
         <view class="fav-item" wx:for="{{favoriteItems}}" wx:key="id"
               bindtap="goDetail" data-id="{{item.id}}">
-          <image class="fav-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <view class="fav-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
           <view class="fav-info">
             <text class="fav-name">{{item.name}}</text>
             <text class="fav-effect">{{item.effectCategory}}</text>
@@ -44,7 +44,7 @@
       <view class="history-grid" wx:if="{{historyItems.length > 0}}">
         <view class="history-item" wx:for="{{historyItems}}" wx:key="id"
               bindtap="goDetail" data-id="{{item.id}}">
-          <image class="history-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <view class="history-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
           <text class="history-name">{{item.name}}</text>
         </view>
       </view>

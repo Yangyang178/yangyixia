@@ -4,59 +4,296 @@ const rules = require('../data/rules')
 const { constitutions } = require('../data/constitution')
 const recipes = require('../data/recipes')
 
-const ingredients = baseIngredients.concat(extraIngredients)
+const emojiMap = {
+  gouqi: '🔴',
+  juhua: '🌼',
+  hongzao: '🫘',
+  guiyuan: '🟤',
+  meiguihua: '🌹',
+  chenpi: '🍊',
+  huangqi: '🟡',
+  shanyao: '⬜',
+  yimi: '⚪',
+  fuling: '◻️',
+  juemingzi: '🟫',
+  jinyinhua: '🌸',
+  baizhi: '🤍',
+  yiner: '☁️',
+  shengjiang: '🫚',
+  dangshen: '🟨',
+  lianzi: '🪷',
+  hongdou: '🔴',
+  shanzha: '🍎',
+  gancao: '🪵',
+  bohe: '🍃',
+  suanzaoren: '🫐',
+  dazao: '🫘',
+  luohanguo: '🟤',
+  heshouwu: '🫚',
+  heizhima: '⚫',
+  hetao: '🧠',
+  danggui: '🫚',
+  baishao: '🤍',
+  hongqi: '🌺',
+  ezhuyu: '🟢',
+  fangling: '💎',
+  wumei: '🫒',
+  lvcha: '🍵',
+  hongcha: '🫖',
+  huaihua: '🌼',
+  ganlan: '🫒',
+  pangdahai: '🟤',
+  shihu: '🌿',
+  yuxingcao: '🐟',
+  baizhu: '⬜',
+  cangzhu: '🟫',
+  gouqiye: '🍃',
+  sangshen: '🫐',
+  lumei: '🌺',
+  taoren: '🍑',
+  chuanxiong: '🫚',
+  shudi: '⬛',
+  huangjing: '🟡',
+  ezhishi: '🍊',
+  foshou: '🤌',
+  dingxiang: '🌸',
+  rougui: '🪵',
+  hongshen: '🔴',
+  wuhuaguo: '🍐',
+  xingren: '🌰',
+  sangye: '🍃',
+  huaijiang: '🫚',
+  zhuye: '🎋',
+  heshi: '🪷',
+  baihe: '❄️',
+  renshen: '🌿',
+  xiyangshen: '🌿',
+  taizishen: '🌿',
+  baibiandou: '🫘',
+  fengmi: '🍯',
+  yitang: '🍬',
+  ejiao: '🟫',
+  ziheche: '🧬',
+  lingzhi: '🍄',
+  yanwo: '🪺',
+  heidou: '⚫',
+  zimi: '🟣',
+  nuomi: '🍚',
+  lizi: '🌰',
+  qianshi: '⚪',
+  huasheng: '🥜',
+  bocai: '🥬',
+  hongshu: '🍠',
+  nangua: '🎃',
+  niurou: '🥩',
+  jirou: '🍗',
+  xianggu: '🍄',
+  houtougu: '🦁',
+  shashen: '🫚',
+  yuzhu: '🟢',
+  tiandong: '💎',
+  shihuhua: '🌸',
+  nvzhenzi: '🫐',
+  hanliancao: '🌿',
+  guijia: '🐢',
+  biejia: '🐢',
+  baihehua: '🤍',
+  huangjingguo: '🟡',
+  zhenzhufen: '✨',
+  li: '🍐',
+  yinyu: '🐟',
+  yarou: '🦆',
+  zhupi: '🧈',
+  niunai: '🥛',
+  ganzhe: '🎋',
+  lurong: '🦌',
+  dongchongxiacao: '🐛',
+  roucongrong: '🌿',
+  suoyang: '🌿',
+  bajitian: '🫚',
+  yinyanghuo: '🌿',
+  duzhong: '🪵',
+  xuduan: '🫚',
+  tusizi: '🌰',
+  shayuanzi: '🌰',
+  jiucaizi: '🫘',
+  xianmao: '🫚',
+  gejie: '🦎',
+  buguzhi: '🌰',
+  yizhiren: '🌰',
+  huangqin: '🟡',
+  huanglian: '🟡',
+  huangbo: '🟡',
+  longdancao: '🌿',
+  kushen: '🫚',
+  zhimu: '🫚',
+  zhizi: '🟠',
+  xiakucao: '🌿',
+  gujingcao: '🌾',
+  mimenghua: '🌼',
+  qingxiangzi: '⚫',
+  zhuru: '🎋',
+  tianhuafen: '⚪',
+  lugen: '🎋',
+  gegen: '🫚',
+  qinghao: '🌿',
+  baiwei: '🫚',
+  digupi: '🪵',
+  yinchaihu: '🫚',
+  huhuanglian: '🟡',
+  zhuling: '🍄',
+  zexie: '⚪',
+  cheqianzi: '🌰',
+  mutong: '🎋',
+  tongcao: '🤍',
+  jinqiancao: '🪙',
+  yinchen: '🌿',
+  biexie: '🫚',
+  difuzi: '🌰',
+  dengxincao: '🕯️',
+  banxia: '⚪',
+  tiannanxing: '⚪',
+  baijiezi: '🫘',
+  sangjisheng2: '🌿',
+  duhuo2: '🫚',
+  xiangfu2: '🫚',
+  muxiang2: '🪵',
+  wuyao2: '🫚',
+  chenxiang2: '🪵',
+  tanxiang2: '🪵',
+  zhiqiao2: '🍊',
+  houpo2: '🪵',
+  dafupi2: '🟫',
+  xiebai2: '🧅',
+  gansong2: '🌿',
+  yuanzhi2: '🫚',
+  hehuanpi2: '🪵',
+  hehuanhua2: '🌸',
+  shouwuteng2: '🌿',
+  zhenzhumu2: '🐚',
+  hupo2: '🟡',
+  cishi2: '🪨',
+  longgu2: '🦴',
+  muli2: '🐚',
+  zibeichi2: '🐚',
+  ruxiang2: '💧',
+  moyao2: '🟤',
+  yanhusuo2: '🟡',
+  yujin2: '🟡',
+  jianghuang2: '🟠',
+  ezhuyu2: '🟫',
+  sanleng2: '🔺',
+  wangbuliuxing2: '⭐',
+  jiangxiang2: '🪵',
+  yinxing2: '🟡',
+  jineijin2: '🟡',
+  shenqu2: '🧱',
+  maiya2: '🌾',
+  guya2: '🌾',
+  laifuzi2: '🌰',
+  wuweizi2: '🫐',
+  fupenzi2: '🫐',
+  wubeizi2: '🟫',
+  hezi2: '🟤',
+  roudoukou2: '🌰',
+  mahuang2: '🌿',
+  guizhi2: '🪵',
+  zisu2: '🍃',
+  jingjie2: '🌿',
+  fangfeng2: '🫚',
+  qianghuo2: '🫚',
+  xixin2: '🌿',
+  gaoben2: '🫚',
+  cangerzi2: '🟢',
+  xinyi2: '🌸',
+  jiegeng2: '🫚',
+  chuanbeimu2: '🤍',
+  zhebeimu2: '🤍',
+  gualou2: '🟡',
+  xuanfuhua2: '🌼'
+}
+
+function getIngredientEmoji(id) {
+  return emojiMap[id] || '🌿'
+}
+
+const categoryColorMap = {
+  '补气血': '#E8B4B8',
+  '清热': '#B4D8E8',
+  '祛湿': '#B8D8B8',
+  '安神': '#D4B8E8',
+  '理气': '#E8D4B8',
+  '滋阴': '#B8C8D8',
+  '温阳': '#E8B8B8',
+  '活血': '#D89898',
+  '消食': '#D8C898',
+  '收涩': '#C8B8C8',
+  '止咳': '#A8C8B8',
+  '解表': '#B8D8D8'
+}
+
+function getCategoryColor(effectCategory) {
+  return categoryColorMap[effectCategory] || '#D8D8D8'
+}
+
+const ingredients = baseIngredients.concat(extraIngredients).map(function(item) {
+  return Object.assign({}, item, {
+    emoji: getIngredientEmoji(item.id),
+    color: getCategoryColor(item.effectCategory)
+  })
+})
 
 function searchIngredients(keyword) {
   if (!keyword || !keyword.trim()) return []
-  const kw = keyword.trim().toLowerCase()
-  return ingredients.filter(item => {
+  var kw = keyword.trim().toLowerCase()
+  return ingredients.filter(function(item) {
     return item.name.toLowerCase().includes(kw) ||
-      item.aliases.some(alias => alias.toLowerCase().includes(kw)) ||
-      item.effects.some(eff => eff.includes(kw)) ||
+      item.aliases.some(function(alias) { return alias.toLowerCase().includes(kw) }) ||
+      item.effects.some(function(eff) { return eff.includes(kw) }) ||
       item.effectCategory.includes(kw)
   })
 }
 
 function getIngredientById(id) {
-  return ingredients.find(item => item.id === id) || null
+  return ingredients.find(function(item) { return item.id === id }) || null
 }
 
 function getIngredientsByCategory(category) {
-  return ingredients.filter(item => item.effectCategory === category)
+  return ingredients.filter(function(item) { return item.effectCategory === category })
 }
 
 function getIngredientsByNature(nature) {
-  return ingredients.filter(item => item.nature === nature)
+  return ingredients.filter(function(item) { return item.nature === nature })
 }
 
 function getIngredientsByForm(form) {
-  return ingredients.filter(item => item.form === form)
+  return ingredients.filter(function(item) { return item.form === form })
 }
 
 function getIngredientsByConstitution(constitutionName) {
-  const suitable = ingredients.filter(item =>
-    item.suitableConstitutions.includes(constitutionName)
-  )
-  const caution = ingredients.filter(item =>
-    item.cautionConstitutions.includes(constitutionName)
-  )
-  return { suitable, caution }
+  var suitable = ingredients.filter(function(item) {
+    return item.suitableConstitutions.includes(constitutionName)
+  })
+  var caution = ingredients.filter(function(item) {
+    return item.cautionConstitutions.includes(constitutionName)
+  })
+  return { suitable: suitable, caution: caution }
 }
 
 function checkMatch(selectedIds) {
-  const selectedIngredients = selectedIds.map(id => getIngredientById(id)).filter(Boolean)
-  const results = {
+  var selectedIngredients = selectedIds.map(function(id) { return getIngredientById(id) }).filter(Boolean)
+  var results = {
     good: [],
     caution: [],
     bad: [],
     constitutionMatch: null
   }
 
-  for (let i = 0; i < selectedIngredients.length; i++) {
-    for (let j = i + 1; j < selectedIngredients.length; j++) {
-      const a = selectedIngredients[i]
-      const b = selectedIngredients[j]
-      const rule = findRule(a.name, b.name)
+  for (var i = 0; i < selectedIngredients.length; i++) {
+    for (var j = i + 1; j < selectedIngredients.length; j++) {
+      var a = selectedIngredients[i]
+      var b = selectedIngredients[j]
+      var rule = findRule(a.name, b.name)
       if (rule) {
         if (rule.relation === '宜') {
           results.good.push({
@@ -88,54 +325,54 @@ function checkMatch(selectedIds) {
 }
 
 function findRule(nameA, nameB) {
-  return rules.find(rule =>
-    (rule.ingredientA === nameA && rule.ingredientB === nameB) ||
-    (rule.ingredientA === nameB && rule.ingredientB === nameA)
-  )
+  return rules.find(function(rule) {
+    return (rule.ingredientA === nameA && rule.ingredientB === nameB) ||
+      (rule.ingredientA === nameB && rule.ingredientB === nameA)
+  })
 }
 
 function calculateConstitution(answers) {
-  const scores = {}
-  answers.forEach(answer => {
-    const scoresObj = answer.scores
-    Object.keys(scoresObj).forEach(key => {
+  var scores = {}
+  answers.forEach(function(answer) {
+    var scoresObj = answer.scores
+    Object.keys(scoresObj).forEach(function(key) {
       scores[key] = (scores[key] || 0) + scoresObj[key]
     })
   })
 
-  let maxScore = 0
-  let result = 'pinghe'
-  Object.keys(scores).forEach(key => {
+  var maxScore = 0
+  var result = 'pinghe'
+  Object.keys(scores).forEach(function(key) {
     if (scores[key] > maxScore) {
       maxScore = scores[key]
       result = key
     }
   })
 
-  const constitution = constitutions.find(c => c.id === result)
+  var constitution = constitutions.find(function(c) { return c.id === result })
   return {
-    scores,
+    scores: scores,
     constitution: constitution || constitutions[0]
   }
 }
 
 function getConstitutionById(id) {
-  return constitutions.find(c => c.id === id) || null
+  return constitutions.find(function(c) { return c.id === id }) || null
 }
 
 function getRecipeById(id) {
-  return recipes.find(r => r.id === id) || null
+  return recipes.find(function(r) { return r.id === id }) || null
 }
 
 function getRecipesByConstitution(constitutionName) {
-  return recipes.filter(r =>
-    r.suitableConstitutions.includes(constitutionName)
-  )
+  return recipes.filter(function(r) {
+    return r.suitableConstitutions.includes(constitutionName)
+  })
 }
 
 function getEffectCategories() {
-  const categories = new Set()
-  ingredients.forEach(item => {
+  var categories = new Set()
+  ingredients.forEach(function(item) {
     if (item.effectCategory) categories.add(item.effectCategory)
   })
   return Array.from(categories)
@@ -146,33 +383,35 @@ function getNatureTypes() {
 }
 
 function getFormTypes() {
-  const forms = new Set()
-  ingredients.forEach(item => {
+  var forms = new Set()
+  ingredients.forEach(function(item) {
     if (item.form) forms.add(item.form)
   })
   return Array.from(forms)
 }
 
 function getHotIngredients() {
-  const hotIds = ['gouqi', 'juhua', 'hongzao', 'meiguihua', 'chenpi', 'yimi', 'huangqi', 'shanyao']
-  return hotIds.map(id => getIngredientById(id)).filter(Boolean)
+  var hotIds = ['gouqi', 'juhua', 'hongzao', 'meiguihua', 'chenpi', 'yimi', 'huangqi', 'shanyao']
+  return hotIds.map(function(id) { return getIngredientById(id) }).filter(Boolean)
 }
 
 module.exports = {
-  searchIngredients,
-  getIngredientById,
-  getIngredientsByCategory,
-  getIngredientsByNature,
-  getIngredientsByForm,
-  getIngredientsByConstitution,
-  checkMatch,
-  findRule,
-  calculateConstitution,
-  getConstitutionById,
-  getRecipeById,
-  getRecipesByConstitution,
-  getEffectCategories,
-  getNatureTypes,
-  getFormTypes,
-  getHotIngredients
+  searchIngredients: searchIngredients,
+  getIngredientById: getIngredientById,
+  getIngredientsByCategory: getIngredientsByCategory,
+  getIngredientsByNature: getIngredientsByNature,
+  getIngredientsByForm: getIngredientsByForm,
+  getIngredientsByConstitution: getIngredientsByConstitution,
+  checkMatch: checkMatch,
+  findRule: findRule,
+  calculateConstitution: calculateConstitution,
+  getConstitutionById: getConstitutionById,
+  getRecipeById: getRecipeById,
+  getRecipesByConstitution: getRecipesByConstitution,
+  getEffectCategories: getEffectCategories,
+  getNatureTypes: getNatureTypes,
+  getFormTypes: getFormTypes,
+  getHotIngredients: getHotIngredients,
+  getIngredientEmoji: getIngredientEmoji,
+  getCategoryColor: getCategoryColor
 }

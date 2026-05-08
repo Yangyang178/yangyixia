@@ -51,7 +51,7 @@
     <view class="result-list" wx:if="{{results.length > 0}}">
       <view class="result-item" wx:for="{{results}}" wx:key="id"
             bindtap="goDetail" data-id="{{item.id}}">
-        <image class="result-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+        <view class="result-image emoji-card" style="background: {{item.color}}"><text class="emoji-text">{{item.emoji}}</text></view>
         <view class="result-info">
           <view class="result-name-row">
             <text class="result-name">{{item.name}}</text>

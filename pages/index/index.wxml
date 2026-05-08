@@ -54,7 +54,7 @@
       <view class="hot-grid">
         <view class="hot-item" wx:for="{{hotIngredients}}" wx:key="id"
               bindtap="goDetail" data-id="{{item.id}}">
-          <image class="hot-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <view class="hot-image emoji-card" style="background: {{item.color}}"><text class="emoji-text">{{item.emoji}}</text></view>
           <text class="hot-name">{{item.name}}</text>
           <text class="hot-effect">{{item.effectCategory}}</text>
         </view>

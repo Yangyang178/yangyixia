@@ -28,7 +28,7 @@
       <view class="ingredient-grid">
         <view class="ingredient-item" wx:for="{{suitableIngredients}}" wx:key="id"
               bindtap="goDetail" data-id="{{item.id}}">
-          <image class="ingredient-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <view class="ingredient-image emoji-card" style="background: {{item.color}}"><text class="emoji-text">{{item.emoji}}</text></view>
           <text class="ingredient-name">{{item.name}}</text>
         </view>
       </view>
@@ -39,7 +39,7 @@
       <view class="ingredient-grid">
         <view class="ingredient-item" wx:for="{{cautionIngredients}}" wx:key="id"
               bindtap="goDetail" data-id="{{item.id}}">
-          <image class="ingredient-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <view class="ingredient-image emoji-card" style="background: {{item.color}}"><text class="emoji-text">{{item.emoji}}</text></view>
           <text class="ingredient-name">{{item.name}}</text>
         </view>
       </view>

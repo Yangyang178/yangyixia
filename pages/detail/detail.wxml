@@ -11,7 +11,7 @@
     </view>
 
     <view class="hero-card card">
-      <image class="hero-image" src="{{ingredient.image}}" mode="aspectFill"></image>
+      <view class="hero-image emoji-card" style="background: {{ingredient.color}}"><text class="emoji-text">{{ingredient.emoji}}</text></view>
       <view class="hero-info">
         <view class="hero-name-row">
           <text class="hero-name">{{ingredient.name}}</text>

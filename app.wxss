@@ -144,3 +144,20 @@ page {
   padding: 20rpx 40rpx;
   line-height: 1.5;
 }
+
+.emoji-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+}
+
+.emoji-text {
+  font-size: 56rpx;
+  line-height: 1;
+}
+
+.emoji-text-sm {
+  font-size: 40rpx;
+  line-height: 1;
+}

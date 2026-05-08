@@ -15,7 +15,7 @@
       <scroll-view class="selected-scroll" scroll-x>
         <view class="selected-list">
           <view class="selected-item" wx:for="{{selectedIngredients}}" wx:key="id">
-            <image class="selected-image" src="{{item.image}}" mode="aspectFill"></image>
+            <view class="selected-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
             <text class="selected-name">{{item.name}}</text>
             <view class="selected-remove" bindtap="removeIngredient" data-index="{{index}}">✕</view>
           </view>
@@ -34,7 +34,7 @@
     <view class="add-list" wx:if="{{searchResults.length > 0 && keyword}}">
       <view class="add-item" wx:for="{{searchResults}}" wx:key="id"
             bindtap="addIngredient" data-id="{{item.id}}">
-        <image class="add-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+        <view class="add-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
         <view class="add-info">
           <text class="add-name">{{item.name}}</text>
           <text class="add-effect">{{item.effectCategory}}</text>
@@ -52,7 +52,7 @@
         <view class="quick-item {{selectedIds.indexOf(item.id) > -1 ? 'selected' : ''}}"
               wx:for="{{commonIngredients}}" wx:key="id"
               bindtap="addIngredient" data-id="{{item.id}}">
-          <image class="quick-image" src="{{item.image}}" mode="aspectFill" lazy-load></image>
+          <view class="quick-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
           <text class="quick-name">{{item.name}}</text>
         </view>
       </view>
