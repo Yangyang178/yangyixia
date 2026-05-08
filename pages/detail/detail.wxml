@@ -72,6 +72,10 @@
     </view>
 
     <view class="action-btns">
+      <view class="btn-outline fav-btn" bindtap="toggleFav">
+        <text>{{isFav ? '❤️' : '🤍'}}</text>
+        <text>{{isFav ? '已收藏' : '收藏'}}</text>
+      </view>
       <view class="btn-primary" bindtap="goMatch">加入搭配自检</view>
     </view>
 

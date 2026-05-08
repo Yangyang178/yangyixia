@@ -180,8 +180,26 @@
   justify-content: center;
 }
 
+.fav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  padding: 18rpx 30rpx;
+  min-width: 160rpx;
+}
+
+.fav-btn text:first-child {
+  font-size: 30rpx;
+  margin-right: 8rpx;
+}
+
+.fav-btn text:last-child {
+  font-size: 26rpx;
+}
+
 .action-btns .btn-primary {
-  width: 100%;
+  flex: 1;
 }
 
 .nav-fav {

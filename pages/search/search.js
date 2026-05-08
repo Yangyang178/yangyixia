@@ -34,6 +34,7 @@ Page({
       this.applyFilterData(options.type, value)
     } else {
       this.setData({ autoFocus: true })
+      this.loadAllIngredients()
     }
   },
 
@@ -61,7 +62,16 @@ Page({
   },
 
   switchTab(e) {
-    this.setData({ activeTab: e.currentTarget.dataset.tab })
+    const tab = e.currentTarget.dataset.tab
+    this.setData({ activeTab: tab })
+    if (tab === 'all') {
+      this.loadAllIngredients()
+    }
+  },
+
+  loadAllIngredients() {
+    const results = api.getAllIngredients()
+    this.setData({ results, searched: true })
   },
 
   applyFilter(e) {

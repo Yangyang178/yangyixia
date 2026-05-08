@@ -47,10 +47,11 @@ Page({
 
   toggleFav() {
     if (!this.data.ingredient) return
-    const favorites = storage.toggleFavorite(this.data.ingredient.id)
-    this.setData({ isFav: !this.data.isFav })
+    storage.toggleFavorite(this.data.ingredient.id)
+    const newFav = !this.data.isFav
+    this.setData({ isFav: newFav })
     wx.showToast({
-      title: this.data.isFav ? '已收藏' : '已取消收藏',
+      title: newFav ? '已收藏' : '已取消收藏',
       icon: 'none'
     })
   },

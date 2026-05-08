@@ -390,6 +390,10 @@ function getFormTypes() {
   return Array.from(forms)
 }
 
+function getAllIngredients() {
+  return ingredients
+}
+
 function getHotIngredients() {
   var hotIds = ['gouqi', 'juhua', 'hongzao', 'meiguihua', 'chenpi', 'yimi', 'huangqi', 'shanyao']
   return hotIds.map(function(id) { return getIngredientById(id) }).filter(Boolean)
@@ -412,6 +416,7 @@ module.exports = {
   getNatureTypes: getNatureTypes,
   getFormTypes: getFormTypes,
   getHotIngredients: getHotIngredients,
+  getAllIngredients: getAllIngredients,
   getIngredientEmoji: getIngredientEmoji,
   getCategoryColor: getCategoryColor
 }
