@@ -84,13 +84,9 @@
   color: var(--text-hint);
 }
 
-.category-scroll {
-  white-space: nowrap;
-}
-
 .category-list {
   display: flex;
-  padding-bottom: 8rpx;
+  flex-wrap: wrap;
 }
 
 .category-item {
@@ -99,7 +95,7 @@
   background: var(--bg-card);
   border-radius: 32rpx;
   padding: 14rpx 24rpx;
-  margin-right: 16rpx;
+  margin: 0 16rpx 16rpx 0;
   box-shadow: 0 2rpx 8rpx var(--shadow);
 }
 

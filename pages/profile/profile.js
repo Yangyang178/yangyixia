@@ -5,6 +5,8 @@ Page({
   data: {
     constitution: null,
     favoriteItems: [],
+    displayFavorites: [],
+    favExpanded: false,
     historyItems: []
   },
 
@@ -20,7 +22,8 @@ Page({
   loadFavorites() {
     const favoriteIds = storage.getFavorites()
     const favoriteItems = favoriteIds.map(id => api.getIngredientById(id)).filter(Boolean)
-    this.setData({ favoriteItems })
+    const displayFavorites = this.data.favExpanded ? favoriteItems : favoriteItems.slice(0, 8)
+    this.setData({ favoriteItems, displayFavorites })
   },
 
   loadHistory() {
@@ -36,6 +39,11 @@ Page({
   goDetail(e) {
     const id = e.currentTarget.dataset.id
     wx.navigateTo({ url: `/pages/detail/detail?id=${id}` })
+  },
+
+  goSearchFav() {
+    this.setData({ favExpanded: true })
+    this.loadFavorites()
   },
 
   goAbout() {

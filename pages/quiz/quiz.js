@@ -101,5 +101,18 @@ Page({
     app.globalData.constitution = result.constitution
 
     wx.navigateTo({ url: `/pages/result/result?id=${result.constitution.id}` })
+  },
+
+  goHome() {
+    this.setData({
+      started: false,
+      completed: false,
+      currentIndex: 0,
+      currentQuestion: null,
+      selectedOption: -1,
+      answers: [],
+      progress: 0
+    })
+    wx.switchTab({ url: '/pages/index/index' })
   }
 })

@@ -1,4 +1,4 @@
-<navigation-bar title="体质自测" back="{{false}}" color="#2D3436" background="#F7F5F2"></navigation-bar>
+<navigation-bar title="体质自测" back="{{true}}" color="#2D3436" background="#F7F5F2" bind:back="goHome"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="quiz-page">
     <view class="quiz-header" wx:if="{{!started}}">

@@ -136,15 +136,20 @@
 
 .quiz-actions {
   display: flex;
+  overflow: hidden;
 }
 
 .prev-btn {
   flex: 1;
   margin-right: 20rpx;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .next-btn {
   flex: 2;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .existing-result {

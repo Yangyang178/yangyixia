@@ -63,12 +63,14 @@ Component({
       const platform = (wx.getDeviceInfo() || wx.getSystemInfoSync()).platform
       const isAndroid = platform === 'android'
       const isDevtools = platform === 'devtools'
-      const { windowWidth, safeArea: { top = 0, bottom = 0 } = {} } = wx.getWindowInfo() || wx.getSystemInfoSync()
+      const sysInfo = wx.getWindowInfo() || wx.getSystemInfoSync()
+      const windowWidth = sysInfo.windowWidth
+      const safeAreaTop = (sysInfo.safeArea && sysInfo.safeArea.top) || sysInfo.statusBarHeight || 0
       this.setData({
         ios: !isAndroid,
         innerPaddingRight: `padding-right: ${windowWidth - rect.left}px`,
         leftWidth: `width: ${windowWidth - rect.left}px`,
-        safeAreaTop: isDevtools || isAndroid ? `height: calc(var(--height) + ${top}px); padding-top: ${top}px` : ``
+        safeAreaTop: `height: calc(var(--height) + ${safeAreaTop}px); padding-top: ${safeAreaTop}px`
       })
     },
   },

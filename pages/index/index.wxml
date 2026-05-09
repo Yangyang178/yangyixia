@@ -23,15 +23,13 @@
       <view class="section-header">
         <text class="section-title">按功效查找</text>
       </view>
-      <scroll-view class="category-scroll" scroll-x>
-        <view class="category-list">
-          <view class="category-item" wx:for="{{effectCategories}}" wx:key="index"
-                bindtap="goCategory" data-type="effect" data-value="{{item}}">
-            <view class="category-dot" style="background: {{categoryColors[index % categoryColors.length]}}"></view>
-            <text class="category-text">{{item}}</text>
-          </view>
+      <view class="category-list">
+        <view class="category-item" wx:for="{{effectCategories}}" wx:key="index"
+              bindtap="goCategory" data-type="effect" data-value="{{item}}">
+          <view class="category-dot" style="background: {{categoryColors[index % categoryColors.length]}}"></view>
+          <text class="category-text">{{item}}</text>
         </view>
-      </scroll-view>
+      </view>
     </view>
 
     <view class="nature-section">

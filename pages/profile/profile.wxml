@@ -21,17 +21,19 @@
     </view>
 
     <view class="menu-section">
-      <view class="section-title">我的收藏</view>
-      <view class="fav-list" wx:if="{{favoriteItems.length > 0}}">
-        <view class="fav-item" wx:for="{{favoriteItems}}" wx:key="id"
+      <view class="section-header-row">
+        <text class="section-title">我的收藏</text>
+        <text class="section-count" wx:if="{{favoriteItems.length > 0}}">{{favoriteItems.length}}项</text>
+      </view>
+      <view class="fav-grid" wx:if="{{displayFavorites.length > 0}}">
+        <view class="fav-grid-item" wx:for="{{displayFavorites}}" wx:key="id"
               bindtap="goDetail" data-id="{{item.id}}">
-          <view class="fav-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
-          <view class="fav-info">
-            <text class="fav-name">{{item.name}}</text>
-            <text class="fav-effect">{{item.effectCategory}}</text>
-          </view>
-          <text class="fav-arrow">›</text>
+          <view class="fav-grid-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
+          <text class="fav-grid-name">{{item.name}}</text>
         </view>
+      </view>
+      <view class="fav-more" wx:if="{{favoriteItems.length > displayFavorites.length}}" bindtap="goSearchFav">
+        <text>查看全部收藏</text>
       </view>
       <view class="empty-state" wx:if="{{favoriteItems.length === 0}}">
         <text class="empty-icon">💝</text>
