@@ -103,6 +103,11 @@ Page({
     wx.navigateTo({ url: `/pages/result/result?id=${result.constitution.id}` })
   },
 
+  viewExistingResult() {
+    const id = this.data.existingConstitution.id
+    wx.navigateTo({ url: `/pages/result/result?id=${id}` })
+  },
+
   goHome() {
     this.setData({
       started: false,

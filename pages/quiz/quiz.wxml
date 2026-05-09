@@ -54,7 +54,10 @@
           <text class="existing-name">{{existingConstitution.name}}</text>
         </view>
         <text class="existing-desc">{{existingConstitution.description}}</text>
-        <view class="btn-outline retake-btn" bindtap="startQuiz">重新测试</view>
+        <view class="existing-actions">
+          <view class="btn-primary view-result-btn" bindtap="viewExistingResult">查看详情</view>
+          <view class="btn-outline retake-btn" bindtap="startQuiz">重新测试</view>
+        </view>
       </view>
     </view>
 

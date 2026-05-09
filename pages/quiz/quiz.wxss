@@ -176,10 +176,29 @@
 .existing-desc {
   font-size: 26rpx;
   color: var(--text-secondary);
-  margin-bottom: 16rpx;
+  margin-bottom: 20rpx;
   display: block;
 }
 
-.retake-btn {
-  width: 100%;
+.existing-actions {
+  display: flex;
+  overflow: hidden;
+}
+
+.btn-primary.view-result-btn {
+  flex: 2;
+  margin-right: 16rpx;
+  min-width: 0;
+  overflow: hidden;
+  padding: 12rpx 46rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-outline.retake-btn {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 12rpx 46rpx;
 }
