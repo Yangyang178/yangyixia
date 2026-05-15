@@ -193,3 +193,41 @@
   font-size: 28rpx;
   color: var(--text-hint);
 }
+
+.match-list {
+  margin-top: -8rpx;
+}
+
+.match-item {
+  margin-bottom: 12rpx;
+}
+
+.match-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.match-item-names {
+  font-size: 28rpx;
+  font-weight: 500;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.match-item-del {
+  font-size: 24rpx;
+  color: var(--danger);
+  flex-shrink: 0;
+  margin-left: 16rpx;
+}
+
+.match-item-time {
+  font-size: 22rpx;
+  color: var(--text-hint);
+  margin-top: 8rpx;
+  display: block;
+}

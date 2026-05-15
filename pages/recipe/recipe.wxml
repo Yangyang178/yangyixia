@@ -1,0 +1,56 @@
+<navigation-bar title="{{recipe.name}}" back="{{true}}" color="#2D3436" background="#F7F5F2"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="recipe-page" wx:if="{{recipe}}">
+    <view class="hero-section">
+      <text class="hero-name">{{recipe.name}}</text>
+      <text class="hero-effect">{{recipe.effect}}</text>
+    </view>
+
+    <view class="ingredients-card card">
+      <view class="card-title">所需食材</view>
+      <view class="ingredient-list">
+        <view class="ingredient-row" wx:for="{{recipe.ingredients}}" wx:key="name"
+              bindtap="goDetail" data-name="{{item.name}}">
+          <text class="ingredient-name">{{item.name}}</text>
+          <text class="ingredient-amount">{{item.amount}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="method-card card" wx:if="{{methodSteps.length > 0}}">
+      <view class="card-title">制作步骤</view>
+      <view class="step-list">
+        <view class="step-item" wx:for="{{methodSteps}}" wx:key="index">
+          <view class="step-num">{{item.index}}</view>
+          <text class="step-text">{{item.text}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="method-card card" wx:if="{{methodSteps.length === 0 && recipe.method}}">
+      <view class="card-title">制作方法</view>
+      <text class="method-text">{{recipe.method}}</text>
+    </view>
+
+    <view class="tips-card card" wx:if="{{recipe.tips}}">
+      <view class="card-title">💡 小贴士</view>
+      <text class="tips-text">{{recipe.tips}}</text>
+    </view>
+
+    <view class="source-card card" wx:if="{{recipe.source}}">
+      <view class="card-title">出处</view>
+      <text class="source-text">{{recipe.source}}</text>
+    </view>
+
+    <view class="warning-card card" wx:if="{{recipe.unsuitableConstitutions.length > 0}}">
+      <view class="card-title">⚠️ 不宜人群</view>
+      <view class="warning-tags">
+        <text class="tag tag-danger" wx:for="{{recipe.unsuitableConstitutions}}" wx:key="index">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="disclaimer">
+      本小程序仅供养生知识参考，不构成医疗建议
+    </view>
+  </view>
+</scroll-view>

@@ -284,3 +284,50 @@
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+.recipe-section {
+  margin-top: 20rpx;
+}
+
+.recipe-list {
+  margin-top: -8rpx;
+}
+
+.recipe-item {
+  margin-bottom: 16rpx;
+}
+
+.recipe-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.recipe-effect {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+.recipe-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.save-btn-wrap {
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.save-scheme-btn {
+  display: inline-block;
+}
+
+.saved-hint {
+  text-align: center;
+  padding: 16rpx;
+  color: var(--success);
+  font-size: 26rpx;
+}

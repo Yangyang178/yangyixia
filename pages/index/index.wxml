@@ -19,6 +19,30 @@
       </view>
     </view>
 
+    <view class="hot-search">
+      <view class="hot-header">
+        <text class="hot-title">热门搜索</text>
+      </view>
+      <view class="hot-tags">
+        <view class="hot-tag" wx:for="{{hotKeywords}}" wx:key="index"
+              bindtap="goHotSearch" data-keyword="{{item}}">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="season-section" wx:if="{{seasonData}}">
+      <view class="section-header">
+        <text class="section-title">🌿 当季养生</text>
+        <text class="season-desc">{{seasonData.season.solarTerms.join(' · ')}}</text>
+      </view>
+      <text class="season-tip">{{seasonData.season.description}}</text>
+      <view class="season-ingredients">
+        <view class="season-ing-item" wx:for="{{seasonData.ingredients}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+          <view class="season-ing-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
+          <text class="season-ing-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
     <view class="category-section">
       <view class="section-header">
         <text class="section-title">按功效查找</text>
@@ -52,7 +76,10 @@
       <view class="hot-grid">
         <view class="hot-item" wx:for="{{hotIngredients}}" wx:key="id"
               bindtap="goDetail" data-id="{{item.id}}">
-          <view class="hot-image emoji-card" style="background: {{item.color}}"><text class="emoji-text">{{item.emoji}}</text></view>
+          <view class="hot-image emoji-card" style="background: {{item.color}}">
+            <image wx:if="{{item.image}}" class="grid-real-image" src="{{item.image}}" mode="aspectFit"></image>
+            <text wx:else class="emoji-text">{{item.emoji}}</text>
+          </view>
           <text class="hot-name">{{item.name}}</text>
           <text class="hot-effect">{{item.effectCategory}}</text>
         </view>

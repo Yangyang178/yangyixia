@@ -4,14 +4,18 @@
   </view>
 </navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
-  <view class="detail-page" wx:if="{{ingredient}}">
+  <skeleton type="detail" loading="{{loading}}" wx:if="{{loading}}"></skeleton>
+  <view class="detail-page" wx:if="{{!loading && ingredient}}">
     <view class="constitution-tip" wx:if="{{constitutionTip}}">
       <text class="tip-icon">{{constitutionTip.icon}}</text>
       <text class="tip-text">{{constitutionTip.text}}</text>
     </view>
 
     <view class="hero-card card">
-      <view class="hero-image emoji-card" style="background: {{ingredient.color}}"><text class="emoji-text">{{ingredient.emoji}}</text></view>
+      <view class="hero-image emoji-card" style="background: {{ingredient.color}}">
+        <image wx:if="{{ingredient.image}}" class="hero-real-image" src="{{ingredient.image}}" mode="aspectFit"></image>
+        <text wx:else class="emoji-text">{{ingredient.emoji}}</text>
+      </view>
       <view class="hero-info">
         <view class="hero-name-row">
           <text class="hero-name">{{ingredient.name}}</text>
@@ -68,6 +72,16 @@
       <view class="pairing-item" wx:for="{{ingredient.pairings}}" wx:key="index">
         <view class="pairing-name">{{item.name}}</view>
         <view class="pairing-desc">{{item.desc}}</view>
+      </view>
+    </view>
+
+    <view class="related-section" wx:if="{{relatedIngredients.length > 0}}">
+      <view class="card-title">相关食材</view>
+      <view class="related-grid">
+        <view class="related-item" wx:for="{{relatedIngredients}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+          <view class="related-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
+          <text class="related-name">{{item.name}}</text>
+        </view>
       </view>
     </view>
 

@@ -1,11 +1,16 @@
 <navigation-bar title="体质结果" back="{{true}}" color="#2D3436" background="#F7F5F2"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
-  <view class="result-page" wx:if="{{constitution}}">
+  <skeleton type="detail" loading="{{loading}}" wx:if="{{loading}}"></skeleton>
+  <view class="result-page" wx:if="{{!loading && constitution}}">
     <view class="hero-section" style="background: linear-gradient(135deg, {{constitution.color}}, {{constitution.color}}99);">
       <text class="hero-icon">{{constitution.icon}}</text>
       <text class="hero-name">{{constitution.name}}</text>
       <text class="hero-desc">{{constitution.description}}</text>
       <view class="hero-badge">仅供参考</view>
+    </view>
+
+    <view class="mixed-badge" wx:if="{{secondaryConstitution}}">
+      <text>兼夹体质：{{secondaryConstitution.name}}</text>
     </view>
 
     <view class="features-card card">
@@ -45,10 +50,25 @@
       </view>
     </view>
 
+    <view class="secondary-section" wx:if="{{secondaryConstitution}}">
+      <view class="card">
+        <view class="card-title">兼夹体质 · {{secondaryConstitution.name}}</view>
+        <text class="secondary-desc">{{secondaryConstitution.description}}</text>
+        <view class="secondary-features">
+          <view class="feature-item" wx:for="{{secondaryConstitution.features}}" wx:key="index">
+            <view class="feature-dot"></view>
+            <text class="feature-text">{{item}}</text>
+          </view>
+        </view>
+        <text class="advice-text">{{secondaryConstitution.advice}}</text>
+      </view>
+    </view>
+
     <view class="recipe-section" wx:if="{{suitableRecipes.length > 0}}">
       <view class="section-title">推荐茶饮汤方</view>
       <view class="recipe-list">
-        <view class="recipe-item card" wx:for="{{suitableRecipes}}" wx:key="id">
+        <view class="recipe-item card" wx:for="{{suitableRecipes}}" wx:key="id"
+              bindtap="goRecipe" data-id="{{item.id}}">
           <text class="recipe-name">{{item.name}}</text>
           <text class="recipe-effect">{{item.effect}}</text>
           <view class="recipe-ingredients">
@@ -59,6 +79,7 @@
     </view>
 
     <view class="action-btns">
+      <view class="btn-outline share-btn" open-type="share">分享给好友</view>
       <view class="btn-outline retake-btn" bindtap="retakeQuiz">重新测试</view>
       <view class="btn-primary home-btn" bindtap="goHome">回到首页</view>
     </view>

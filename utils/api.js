@@ -3,6 +3,7 @@ const extraIngredients = require('../data/ingredients-extra')
 const rules = require('../data/rules')
 const { constitutions } = require('../data/constitution')
 const recipes = require('../data/recipes')
+const { seasons } = require('../data/season')
 
 const emojiMap = {
   gouqi: '🔴',
@@ -213,8 +214,15 @@ const emojiMap = {
   xuanfuhua2: '🌼'
 }
 
+var imageUrlMap = {}
+
 function getIngredientEmoji(id) {
   return emojiMap[id] || '🌿'
+}
+
+function getIngredientImage(id) {
+  if (imageUrlMap[id]) return imageUrlMap[id]
+  return ''
 }
 
 const categoryColorMap = {
@@ -239,7 +247,8 @@ function getCategoryColor(effectCategory) {
 const ingredients = baseIngredients.concat(extraIngredients).map(function(item) {
   return Object.assign({}, item, {
     emoji: getIngredientEmoji(item.id),
-    color: getCategoryColor(item.effectCategory)
+    color: getCategoryColor(item.effectCategory),
+    image: getIngredientImage(item.id)
   })
 })
 
@@ -340,19 +349,32 @@ function calculateConstitution(answers) {
     })
   })
 
-  var maxScore = 0
-  var result = 'pinghe'
-  Object.keys(scores).forEach(function(key) {
-    if (scores[key] > maxScore) {
-      maxScore = scores[key]
-      result = key
-    }
+  var sortedKeys = Object.keys(scores).sort(function(a, b) {
+    return scores[b] - scores[a]
   })
 
-  var constitution = constitutions.find(function(c) { return c.id === result })
+  var primaryId = sortedKeys.length > 0 ? sortedKeys[0] : 'pinghe'
+  var primaryScore = scores[primaryId] || 0
+  var secondaryId = sortedKeys.length > 1 ? sortedKeys[1] : null
+  var secondaryScore = secondaryId ? scores[secondaryId] : 0
+
+  var isMixed = secondaryId !== null && primaryScore > 0 && secondaryScore >= primaryScore * 0.7
+
+  var constitution = constitutions.find(function(c) { return c.id === primaryId }) || constitutions[0]
+  var secondaryConstitution = null
+
+  if (isMixed) {
+    secondaryConstitution = constitutions.find(function(c) { return c.id === secondaryId }) || null
+    if (secondaryConstitution) {
+      constitution = Object.assign({}, constitution, { secondaryConstitution: secondaryConstitution })
+    }
+  }
+
   return {
     scores: scores,
-    constitution: constitution || constitutions[0]
+    constitution: constitution,
+    secondaryConstitution: secondaryConstitution,
+    isMixed: isMixed
   }
 }
 
@@ -399,6 +421,22 @@ function getHotIngredients() {
   return hotIds.map(function(id) { return getIngredientById(id) }).filter(Boolean)
 }
 
+function getCurrentSeason() {
+  var month = new Date().getMonth()
+  return seasons[month]
+}
+
+function getSeasonRecommendations() {
+  var season = getCurrentSeason()
+  var ingredients = season.ingredientIds.map(function(id) {
+    return getIngredientById(id)
+  }).filter(Boolean)
+  var recipes = season.recipeIds.map(function(id) {
+    return getRecipeById(id)
+  }).filter(Boolean)
+  return { season: season, ingredients: ingredients, recipes: recipes }
+}
+
 module.exports = {
   searchIngredients: searchIngredients,
   getIngredientById: getIngredientById,
@@ -418,5 +456,8 @@ module.exports = {
   getHotIngredients: getHotIngredients,
   getAllIngredients: getAllIngredients,
   getIngredientEmoji: getIngredientEmoji,
-  getCategoryColor: getCategoryColor
+  getIngredientImage: getIngredientImage,
+  getCategoryColor: getCategoryColor,
+  getCurrentSeason: getCurrentSeason,
+  getSeasonRecommendations: getSeasonRecommendations
 }

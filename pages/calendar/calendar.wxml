@@ -1,0 +1,64 @@
+<navigation-bar title="节气养生" back="{{true}}" color="#2D3436" background="#F7F5F2"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="calendar-page">
+
+    <view class="current-term-card" wx:if="{{currentTerm}}">
+      <view class="current-term-header">
+        <text class="current-term-badge">当前节气</text>
+        <text class="current-term-date">{{currentTerm.month}}月{{currentTerm.day}}日</text>
+      </view>
+      <text class="current-term-name">{{currentTerm.name}}</text>
+      <text class="current-term-desc">{{currentTerm.description}}</text>
+      <view class="current-term-advice-row">
+        <text class="current-term-advice-label">养生建议</text>
+        <text class="current-term-advice">{{currentTerm.advice}}</text>
+      </view>
+      <view class="current-term-ingredients">
+        <text class="current-term-ingredients-label">推荐食材</text>
+        <view class="ingredient-row">
+          <view class="ingredient-mini-card" wx:for="{{currentTerm.ingredients}}" wx:key="id"
+                bindtap="goDetail" data-id="{{item.id}}">
+            <view class="ingredient-mini-emoji emoji-card" style="background: {{item.color}}">
+              <text class="emoji-text-xs">{{item.emoji}}</text>
+            </view>
+            <text class="ingredient-mini-name">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="timeline-section">
+      <view class="section-title">二十四节气</view>
+      <view class="timeline">
+        <view class="timeline-item {{index === currentTermIndex ? 'is-current' : ''}}"
+              wx:for="{{solarTerms}}" wx:key="name">
+          <view class="timeline-dot-wrap">
+            <view class="timeline-dot {{index === currentTermIndex ? 'dot-active' : ''}}"></view>
+            <view class="timeline-line" wx:if="{{index < solarTerms.length - 1}}"></view>
+          </view>
+          <view class="timeline-content card">
+            <view class="timeline-header">
+              <text class="timeline-name">{{item.name}}</text>
+              <text class="timeline-date">{{item.month}}月{{item.day}}日</text>
+            </view>
+            <text class="timeline-desc">{{item.description}}</text>
+            <text class="timeline-advice">{{item.advice}}</text>
+            <view class="timeline-ingredients">
+              <view class="ingredient-mini-card" wx:for="{{item.ingredients}}" wx:for-item="ing" wx:key="id"
+                    bindtap="goDetail" data-id="{{ing.id}}">
+                <view class="ingredient-mini-emoji emoji-card" style="background: {{ing.color}}">
+                  <text class="emoji-text-xs">{{ing.emoji}}</text>
+                </view>
+                <text class="ingredient-mini-name">{{ing.name}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="disclaimer">
+      节气日期为近似值，实际日期可能有1-2天偏差
+    </view>
+  </view>
+</scroll-view>

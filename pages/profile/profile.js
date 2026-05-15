@@ -1,5 +1,6 @@
 const api = require('../../utils/api')
 const storage = require('../../utils/storage')
+const analytics = require('../../utils/analytics')
 
 Page({
   data: {
@@ -7,16 +8,19 @@ Page({
     favoriteItems: [],
     displayFavorites: [],
     favExpanded: false,
-    historyItems: []
+    historyItems: [],
+    savedMatches: []
   },
 
   onShow() {
+    analytics.track('page_view', { page: 'profile' })
     const app = getApp()
     const constitution = app.globalData.constitution
     this.setData({ constitution })
 
     this.loadFavorites()
     this.loadHistory()
+    this.loadSavedMatches()
   },
 
   loadFavorites() {
@@ -32,6 +36,25 @@ Page({
     this.setData({ historyItems })
   },
 
+  loadSavedMatches() {
+    const savedMatches = storage.getSavedMatches().map(item => {
+      const date = new Date(item.timestamp)
+      const timeStr = date.getFullYear() + '-' +
+        String(date.getMonth() + 1).padStart(2, '0') + '-' +
+        String(date.getDate()).padStart(2, '0') + ' ' +
+        String(date.getHours()).padStart(2, '0') + ':' +
+        String(date.getMinutes()).padStart(2, '0')
+      return Object.assign({}, item, { timeStr })
+    })
+    this.setData({ savedMatches })
+  },
+
+  deleteMatch(e) {
+    const index = e.currentTarget.dataset.index
+    storage.removeMatch(index)
+    this.loadSavedMatches()
+  },
+
   goQuiz() {
     wx.switchTab({ url: '/pages/quiz/quiz' })
   },
@@ -44,6 +67,10 @@ Page({
   goSearchFav() {
     this.setData({ favExpanded: true })
     this.loadFavorites()
+  },
+
+  goCalendar() {
+    wx.navigateTo({ url: '/pages/calendar/calendar' })
   },
 
   goAbout() {
@@ -64,5 +91,13 @@ Page({
       confirmText: '我已了解',
       confirmColor: '#5B8C5A'
     })
+  },
+
+  goHomeFromProfile() {
+    wx.switchTab({ url: '/pages/index/index' })
+  },
+
+  goSearchFromProfile() {
+    wx.navigateTo({ url: '/pages/search/search' })
   }
 })

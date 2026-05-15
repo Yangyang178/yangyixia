@@ -2,7 +2,10 @@ const STORAGE_KEYS = {
   CONSTITUTION: 'ysc_constitution',
   FAVORITES: 'ysc_favorites',
   HISTORY: 'ysc_history',
-  QUIZ_ANSWERS: 'ysc_quiz_answers'
+  SEARCH_HISTORY: 'ysc_search_history',
+  QUIZ_ANSWERS: 'ysc_quiz_answers',
+  PENDING_MATCH_ID: 'ysc_pending_match_id',
+  SAVED_MATCHES: 'ysc_saved_matches'
 }
 
 function getConstitution() {
@@ -74,6 +77,40 @@ function addHistory(ingredientId) {
   }
 }
 
+function getSearchHistory() {
+  try {
+    return wx.getStorageSync(STORAGE_KEYS.SEARCH_HISTORY) || []
+  } catch (e) {
+    return []
+  }
+}
+
+function addSearchHistory(keyword) {
+  if (!keyword || !keyword.trim()) return
+  const history = getSearchHistory()
+  const index = history.indexOf(keyword)
+  if (index > -1) {
+    history.splice(index, 1)
+  }
+  history.unshift(keyword)
+  if (history.length > 10) {
+    history.pop()
+  }
+  try {
+    wx.setStorageSync(STORAGE_KEYS.SEARCH_HISTORY, history)
+  } catch (e) {
+    console.error('保存搜索历史失败', e)
+  }
+}
+
+function clearSearchHistory() {
+  try {
+    wx.setStorageSync(STORAGE_KEYS.SEARCH_HISTORY, [])
+  } catch (e) {
+    console.error('清除搜索历史失败', e)
+  }
+}
+
 function getQuizAnswers() {
   try {
     return wx.getStorageSync(STORAGE_KEYS.QUIZ_ANSWERS) || null
@@ -90,6 +127,61 @@ function setQuizAnswers(answers) {
   }
 }
 
+function getPendingMatchId() {
+  try {
+    return wx.getStorageSync(STORAGE_KEYS.PENDING_MATCH_ID) || null
+  } catch (e) {
+    return null
+  }
+}
+
+function setPendingMatchId(id) {
+  try {
+    wx.setStorageSync(STORAGE_KEYS.PENDING_MATCH_ID, id)
+  } catch (e) {
+    console.error('保存待搭配ID失败', e)
+  }
+}
+
+function clearPendingMatchId() {
+  try {
+    wx.removeStorageSync(STORAGE_KEYS.PENDING_MATCH_ID)
+  } catch (e) {
+    console.error('清除待搭配ID失败', e)
+  }
+}
+
+function getSavedMatches() {
+  try {
+    return wx.getStorageSync(STORAGE_KEYS.SAVED_MATCHES) || []
+  } catch (e) {
+    return []
+  }
+}
+
+function saveMatch(matchData) {
+  const matches = getSavedMatches()
+  matches.unshift(matchData)
+  if (matches.length > 20) {
+    matches.length = 20
+  }
+  try {
+    wx.setStorageSync(STORAGE_KEYS.SAVED_MATCHES, matches)
+  } catch (e) {
+    console.error('保存搭配方案失败', e)
+  }
+}
+
+function removeMatch(index) {
+  const matches = getSavedMatches()
+  matches.splice(index, 1)
+  try {
+    wx.setStorageSync(STORAGE_KEYS.SAVED_MATCHES, matches)
+  } catch (e) {
+    console.error('删除搭配方案失败', e)
+  }
+}
+
 module.exports = {
   getConstitution,
   setConstitution,
@@ -98,6 +190,15 @@ module.exports = {
   isFavorite,
   getHistory,
   addHistory,
+  getSearchHistory,
+  addSearchHistory,
+  clearSearchHistory,
   getQuizAnswers,
-  setQuizAnswers
+  setQuizAnswers,
+  getPendingMatchId,
+  setPendingMatchId,
+  clearPendingMatchId,
+  getSavedMatches,
+  saveMatch,
+  removeMatch
 }

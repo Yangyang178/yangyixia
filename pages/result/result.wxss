@@ -163,6 +163,13 @@
   overflow: hidden;
 }
 
+.share-btn {
+  flex: 1;
+  margin-right: 20rpx;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .retake-btn {
   flex: 1;
   margin-right: 20rpx;
@@ -174,4 +181,29 @@
   flex: 2;
   min-width: 0;
   overflow: hidden;
+}
+
+.mixed-badge {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  text-align: center;
+  padding: 12rpx 24rpx;
+  font-size: 24rpx;
+  border-radius: 0 0 16rpx 16rpx;
+  margin: -24rpx 0 24rpx;
+}
+
+.secondary-section {
+  margin-top: 20rpx;
+}
+
+.secondary-desc {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 12rpx;
+  display: block;
+}
+
+.secondary-features {
+  margin-bottom: 16rpx;
 }

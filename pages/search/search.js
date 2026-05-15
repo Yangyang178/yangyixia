@@ -1,4 +1,6 @@
 const api = require('../../utils/api')
+const storage = require('../../utils/storage')
+const analytics = require('../../utils/analytics')
 
 Page({
   data: {
@@ -15,16 +17,23 @@ Page({
     formTypes: [],
     categoryColors: ['#5B8C5A', '#D4A574', '#E57373', '#64B5F6', '#BA68C8', '#4DB6AC', '#FFB74D', '#7986CB'],
     natureColors: ['#2196F3', '#42A5F5', '#64B5F6', '#81C784', '#FFB74D', '#FF8A65', '#E57373'],
-    formIcons: ['🌸', '🌿', '🍎', '🥕']
+    formIcons: ['🌸', '🌿', '🍎', '🥕'],
+    searchHistory: []
   },
 
   onLoad(options) {
+    analytics.track('page_view', { page: 'search' })
     const effectCategories = api.getEffectCategories()
     const natureTypes = api.getNatureTypes()
     const formTypes = api.getFormTypes()
-    this.setData({ effectCategories, natureTypes, formTypes })
+    const searchHistory = storage.getSearchHistory()
+    this.setData({ effectCategories, natureTypes, formTypes, searchHistory })
 
-    if (options.type && options.value) {
+    if (options.keyword) {
+      const keyword = decodeURIComponent(options.keyword)
+      this.setData({ keyword })
+      this.doSearch(keyword)
+    } else if (options.type && options.value) {
       const value = decodeURIComponent(options.value)
       this.setData({
         filterType: options.type,
@@ -53,12 +62,15 @@ Page({
 
   doSearch(keyword) {
     if (!keyword || !keyword.trim()) return
+    analytics.track('search', { keyword: keyword })
+    storage.addSearchHistory(keyword)
+    const searchHistory = storage.getSearchHistory()
     const results = api.searchIngredients(keyword)
-    this.setData({ results, searched: true })
+    this.setData({ results, searched: true, searchHistory })
   },
 
   clearInput() {
-    this.setData({ keyword: '', results: [], searched: false, autoFocus: true })
+    this.setData({ keyword: '', results: [], searched: false, autoFocus: true, searchHistory: storage.getSearchHistory() })
   },
 
   switchTab(e) {
@@ -100,5 +112,9 @@ Page({
   goDetail(e) {
     const id = e.currentTarget.dataset.id
     wx.navigateTo({ url: `/pages/detail/detail?id=${id}` })
+  },
+
+  goBrowseAll() {
+    this.loadAllIngredients()
   }
 })

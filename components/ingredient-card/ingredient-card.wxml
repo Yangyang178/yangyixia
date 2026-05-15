@@ -1,0 +1,7 @@
+<view class="ingredient-card {{size}}" bindtap="onTap">
+  <view class="card-image emoji-card" style="background: {{color}}">
+    <text class="{{size === 'lg' ? 'emoji-text' : 'emoji-text-sm'}}">{{emoji}}</text>
+  </view>
+  <text class="card-name">{{name}}</text>
+  <text class="card-subtitle" wx:if="{{subtitle}}">{{subtitle}}</text>
+</view>

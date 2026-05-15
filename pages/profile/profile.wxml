@@ -38,6 +38,24 @@
       <view class="empty-state" wx:if="{{favoriteItems.length === 0}}">
         <text class="empty-icon">💝</text>
         <text class="empty-text">还没有收藏食材，去首页看看吧</text>
+        <view class="btn-outline empty-btn" bindtap="goHomeFromProfile">去首页看看</view>
+      </view>
+    </view>
+
+    <view class="menu-section">
+      <view class="section-title">我的搭配方案</view>
+      <view class="match-list" wx:if="{{savedMatches.length > 0}}">
+        <view class="match-item card" wx:for="{{savedMatches}}" wx:key="index">
+          <view class="match-item-header">
+            <text class="match-item-names">{{item.ingredients.join(' + ')}}</text>
+            <text class="match-item-del" bindtap="deleteMatch" data-index="{{index}}">删除</text>
+          </view>
+          <text class="match-item-time">{{item.timeStr}}</text>
+        </view>
+      </view>
+      <view class="empty-state" wx:if="{{savedMatches.length === 0}}">
+        <text class="empty-icon">🫖</text>
+        <text class="empty-text">还没有保存搭配方案</text>
       </view>
     </view>
 
@@ -53,10 +71,16 @@
       <view class="empty-state" wx:if="{{historyItems.length === 0}}">
         <text class="empty-icon">📖</text>
         <text class="empty-text">还没有浏览记录</text>
+        <view class="btn-outline empty-btn" bindtap="goSearchFromProfile">去搜索食材</view>
       </view>
     </view>
 
     <view class="menu-section">
+      <view class="menu-item" bindtap="goCalendar">
+        <text class="menu-icon">📅</text>
+        <text class="menu-text">节气养生</text>
+        <text class="menu-arrow">›</text>
+      </view>
       <view class="menu-item" bindtap="goAbout">
         <text class="menu-icon">ℹ️</text>
         <text class="menu-text">关于养生查</text>

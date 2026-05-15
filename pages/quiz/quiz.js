@@ -1,6 +1,7 @@
 const { quizQuestions, constitutions } = require('../../data/constitution')
 const api = require('../../utils/api')
 const storage = require('../../utils/storage')
+const analytics = require('../../utils/analytics')
 
 Page({
   data: {
@@ -16,6 +17,7 @@ Page({
   },
 
   onShow() {
+    analytics.track('page_view', { page: 'quiz' })
     const app = getApp()
     const constitution = app.globalData.constitution
     if (constitution) {
@@ -35,6 +37,7 @@ Page({
   },
 
   startQuiz() {
+    analytics.track('start_quiz', {})
     this.setData({
       started: true,
       completed: false,
@@ -89,6 +92,7 @@ Page({
   },
 
   viewResult() {
+    analytics.track('complete_quiz', {})
     const answerObjects = this.data.answers.map((optIndex, qIndex) => {
       return this.data.questions[qIndex].options[optIndex]
     })
@@ -100,7 +104,11 @@ Page({
     const app = getApp()
     app.globalData.constitution = result.constitution
 
-    wx.navigateTo({ url: `/pages/result/result?id=${result.constitution.id}` })
+    var url = '/pages/result/result?id=' + result.constitution.id
+    if (result.isMixed && result.secondaryConstitution) {
+      url += '&secondaryId=' + result.secondaryConstitution.id
+    }
+    wx.navigateTo({ url: url })
   },
 
   viewExistingResult() {

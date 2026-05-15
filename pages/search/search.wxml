@@ -11,6 +11,17 @@
       </view>
     </view>
 
+    <view class="search-history" wx:if="{{!keyword && !filterType && searchHistory.length > 0}}">
+      <view class="history-header">
+        <text class="history-title">最近搜索</text>
+        <text class="history-clear" bindtap="onClearSearchHistory">清空</text>
+      </view>
+      <view class="history-tags">
+        <text class="history-tag" wx:for="{{searchHistory}}" wx:key="index"
+              bindtap="onHistoryTap" data-keyword="{{item}}">{{item}}</text>
+      </view>
+    </view>
+
     <view class="filter-tabs" wx:if="{{!keyword && !filterType}}">
       <view class="filter-tab {{activeTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">全部</view>
       <view class="filter-tab {{activeTab === 'effect' ? 'active' : ''}}" bindtap="switchTab" data-tab="effect">按功效</view>
@@ -59,7 +70,10 @@
     <view class="result-list" wx:if="{{results.length > 0 && (keyword || filterType)}}">
       <view class="result-item" wx:for="{{results}}" wx:key="id"
             bindtap="goDetail" data-id="{{item.id}}">
-        <view class="result-image emoji-card" style="background: {{item.color}}"><text class="emoji-text">{{item.emoji}}</text></view>
+        <view class="result-image emoji-card" style="background: {{item.color}}">
+          <image wx:if="{{item.image}}" class="grid-real-image" src="{{item.image}}" mode="aspectFit"></image>
+          <text wx:else class="emoji-text">{{item.emoji}}</text>
+        </view>
         <view class="result-info">
           <view class="result-name-row">
             <text class="result-name">{{item.name}}</text>
@@ -76,6 +90,7 @@
     <view class="empty-state" wx:if="{{searched && results.length === 0}}">
       <text class="empty-icon">🔍</text>
       <text class="empty-text">没有找到相关食材，换个关键词试试</text>
+      <view class="btn-outline empty-btn" bindtap="goBrowseAll">浏览全部食材</view>
     </view>
 
     <view class="disclaimer">

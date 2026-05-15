@@ -137,6 +137,12 @@ page {
   color: var(--text-hint);
 }
 
+.empty-btn {
+  margin-top: 20rpx;
+  padding: 12rpx 36rpx;
+  font-size: 24rpx;
+}
+
 .disclaimer {
   font-size: 20rpx;
   color: var(--text-hint);

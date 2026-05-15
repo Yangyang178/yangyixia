@@ -1,4 +1,7 @@
 const api = require('../../utils/api')
+const storage = require('../../utils/storage')
+const recipes = require('../../data/recipes')
+const analytics = require('../../utils/analytics')
 
 Page({
   data: {
@@ -8,11 +11,29 @@ Page({
     selectedIds: [],
     commonIngredients: [],
     matchResult: null,
-    constitutionMatch: null
+    constitutionMatch: null,
+    recommendedRecipes: [],
+    schemeSaved: false
   },
 
   onShow() {
+    analytics.track('page_view', { page: 'match' })
     this.loadCommonIngredients()
+    const pendingId = storage.getPendingMatchId()
+    if (pendingId) {
+      storage.clearPendingMatchId()
+      const selectedIds = this.data.selectedIds.slice()
+      const selectedIngredients = this.data.selectedIngredients.slice()
+      if (selectedIds.indexOf(pendingId) === -1 && selectedIngredients.length < 5) {
+        const ingredient = api.getIngredientById(pendingId)
+        if (ingredient) {
+          selectedIngredients.push(ingredient)
+          selectedIds.push(pendingId)
+          this.setData({ selectedIngredients, selectedIds, matchResult: null })
+          wx.showToast({ title: '已添加到搭配列表', icon: 'none' })
+        }
+      }
+    }
   },
 
   loadCommonIngredients() {
@@ -81,12 +102,15 @@ Page({
       selectedIds: [],
       matchResult: null,
       constitutionMatch: null,
+      recommendedRecipes: [],
+      schemeSaved: false,
       keyword: '',
       searchResults: []
     })
   },
 
   checkMatch() {
+    analytics.track('check_match', { ingredients: this.data.selectedIds })
     const matchResult = api.checkMatch(this.data.selectedIds)
     this.setData({ matchResult })
 
@@ -108,5 +132,28 @@ Page({
       }
       this.setData({ constitutionMatch: text })
     }
+
+    const selectedNames = this.data.selectedIngredients.map(i => i.name)
+    const recommendedRecipes = recipes.filter(recipe =>
+      recipe.ingredients.some(ing => selectedNames.indexOf(ing.name) > -1)
+    ).slice(0, 3)
+    this.setData({ recommendedRecipes, schemeSaved: false })
+  },
+
+  goRecipe(e) {
+    wx.navigateTo({ url: '/pages/recipe/recipe?id=' + e.currentTarget.dataset.id })
+  },
+
+  saveScheme() {
+    const matchData = {
+      ingredients: this.data.selectedIngredients.map(i => i.name),
+      matchResult: this.data.matchResult,
+      constitutionMatch: this.data.constitutionMatch,
+      recommendedRecipes: this.data.recommendedRecipes,
+      timestamp: Date.now()
+    }
+    storage.saveMatch(matchData)
+    this.setData({ schemeSaved: true })
+    wx.showToast({ title: '方案已保存', icon: 'none' })
   }
 })

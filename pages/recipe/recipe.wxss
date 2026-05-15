@@ -1,0 +1,138 @@
+.recipe-page {
+  padding: 0 28rpx 40rpx;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48rpx 40rpx 36rpx;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  margin: -20rpx -28rpx 24rpx;
+  border-radius: 0 0 32rpx 32rpx;
+}
+
+.hero-name {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 12rpx;
+}
+
+.hero-effect {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+.ingredients-card {
+  margin-bottom: 20rpx;
+}
+
+.ingredient-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredient-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.ingredient-row:last-child {
+  border-bottom: none;
+}
+
+.ingredient-name {
+  font-size: 28rpx;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.ingredient-amount {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.method-card {
+  margin-bottom: 20rpx;
+}
+
+.step-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.step-item:last-child {
+  margin-bottom: 0;
+}
+
+.step-num {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: var(--primary-bg);
+  color: var(--primary);
+  font-size: 24rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-top: 6rpx;
+  flex: 1;
+}
+
+.method-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.tips-card {
+  margin-bottom: 20rpx;
+  border-left: 6rpx solid var(--warning);
+}
+
+.tips-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.source-card {
+  margin-bottom: 20rpx;
+}
+
+.source-text {
+  font-size: 26rpx;
+  color: var(--accent-dark);
+  font-style: italic;
+}
+
+.warning-card {
+  margin-bottom: 20rpx;
+  border-left: 6rpx solid var(--danger);
+}
+
+.warning-tags {
+  display: flex;
+  flex-wrap: wrap;
+}

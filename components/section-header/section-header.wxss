@@ -1,0 +1,24 @@
+.section-header-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-left: 4rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.section-count {
+  font-size: 22rpx;
+  color: var(--text-hint);
+  margin-left: 12rpx;
+}
+
+.section-more {
+  font-size: 24rpx;
+  color: var(--primary);
+  margin-left: auto;
+}

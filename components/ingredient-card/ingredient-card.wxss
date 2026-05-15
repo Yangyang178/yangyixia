@@ -1,0 +1,41 @@
+.ingredient-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ingredient-card.sm {
+  width: 25%;
+  padding: 8rpx 0;
+}
+
+.ingredient-card.lg {
+  width: auto;
+}
+
+.card-image {
+  width: 88rpx;
+  height: 88rpx;
+}
+
+.ingredient-card.lg .card-image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.card-name {
+  text-align: center;
+}
+
+.ingredient-card.sm .card-name {
+  font-size: 22rpx;
+}
+
+.ingredient-card.lg .card-name {
+  font-size: 28rpx;
+}
+
+.card-subtitle {
+  font-size: 20rpx;
+  color: var(--text-hint);
+}

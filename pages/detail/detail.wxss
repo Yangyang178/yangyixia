@@ -38,6 +38,11 @@
   justify-content: center;
 }
 
+.hero-real-image {
+  width: 100%;
+  height: 100%;
+}
+
 .hero-info {
   flex: 1;
   display: flex;
@@ -205,4 +210,38 @@
 .nav-fav {
   padding: 8rpx 16rpx;
   font-size: 32rpx;
+}
+
+.related-section {
+  margin-bottom: 20rpx;
+}
+
+.related-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.related-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rpx;
+  box-sizing: border-box;
+}
+
+.related-image {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 16rpx;
+  margin-bottom: 6rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.related-name {
+  font-size: 22rpx;
+  color: var(--text-primary);
+  text-align: center;
 }

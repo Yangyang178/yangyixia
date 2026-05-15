@@ -1,4 +1,4 @@
-const ingredients = [
+﻿const ingredients = [
   {
     id: 'gouqi',
     name: '枸杞',
@@ -15,6 +15,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '补气血',
+    usage: '泡茶5-10粒，煲汤10-15g',
+    selection: '颗粒饱满、色泽红润、无硫磺熏制者为佳',
     pairings: [
       { name: '枸杞+菊花', desc: '养肝明目，出自《本草纲目》' },
       { name: '枸杞+红枣', desc: '补气养血，出自《食疗本草》' },
@@ -37,6 +39,8 @@ const ingredients = [
     category: '药食同源',
     form: '花',
     effectCategory: '清热',
+    usage: '泡茶3-5朵',
+    selection: '花朵完整、色泽金黄、无霉变者为佳',
     pairings: [
       { name: '菊花+枸杞', desc: '养肝明目，出自《本草纲目》' },
       { name: '菊花+决明子', desc: '清肝明目，出自《药性论》' },
@@ -59,6 +63,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '补气血',
+    usage: '泡茶3-5颗（去核），煲汤5-8颗',
+    selection: '个大肉厚、色泽红润、核小者为佳',
     pairings: [
       { name: '红枣+枸杞', desc: '补气养血，出自《食疗本草》' },
       { name: '红枣+桂圆', desc: '养血安神，出自《本草纲目》' },
@@ -81,6 +87,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '安神',
+    usage: '泡茶5-8粒，煲汤10-15g',
+    selection: '肉厚核小、味甜、色泽棕黄者为佳',
     pairings: [
       { name: '桂圆+红枣', desc: '养血安神，出自《本草纲目》' },
       { name: '桂圆+莲子', desc: '补脾养心，出自《本草备要》' },
@@ -103,6 +111,8 @@ const ingredients = [
     category: '药食同源',
     form: '花',
     effectCategory: '理气',
+    usage: '泡茶3-5朵',
+    selection: '花朵完整、色泽紫红、香气浓郁者为佳',
     pairings: [
       { name: '玫瑰花+陈皮', desc: '理气解郁，出自《本草正义》' },
       { name: '玫瑰花+红枣', desc: '养血理气，出自《饮片新参》' },
@@ -125,6 +135,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '理气',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '皮厚质韧、香气浓郁、年份越久越佳',
     pairings: [
       { name: '陈皮+玫瑰花', desc: '理气解郁，出自《本草正义》' },
       { name: '陈皮+生姜', desc: '温中止呕，出自《金匮要略》' },
@@ -147,6 +159,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '补气血',
+    usage: '泡茶5-10g，煲汤15-30g',
+    selection: '条粗壮、质坚而绵、粉性足者为佳',
     pairings: [
       { name: '黄芪+党参', desc: '补气健脾，出自《脾胃论》' },
       { name: '黄芪+枸杞', desc: '益气养阴，出自《本草正》' },
@@ -169,6 +183,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '补气血',
+    usage: '煲汤15-30g，煮粥10-15g',
+    selection: '条粗直、质坚实、粉性足者为佳',
     pairings: [
       { name: '山药+枸杞', desc: '滋补脾肾，出自《本草正》' },
       { name: '山药+薏米', desc: '健脾祛湿，出自《本草纲目》' },
@@ -191,6 +207,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '祛湿',
+    usage: '煮粥30-60g，煲汤15-30g',
+    selection: '粒大饱满、色泽白净、无虫蛀者为佳',
     pairings: [
       { name: '薏米+红豆', desc: '利水消肿，出自《本草纲目》' },
       { name: '薏米+山药', desc: '健脾祛湿，出自《本草纲目》' },
@@ -213,6 +231,8 @@ const ingredients = [
     category: '药食同源',
     form: '草',
     effectCategory: '祛湿',
+    usage: '煲汤10-15g，煮粥5-10g',
+    selection: '体重质实、外皮棕褐、断面白色细腻者为佳',
     pairings: [
       { name: '茯苓+薏米', desc: '渗湿健脾，出自《和剂局方》' },
       { name: '茯苓+陈皮', desc: '健脾化痰，出自《和剂局方》' },
@@ -235,6 +255,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '清热',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '决明子+菊花', desc: '清肝明目，出自《药性论》' },
       { name: '决明子+枸杞', desc: '滋阴明目，出自《本草纲目》' },
@@ -257,6 +279,8 @@ const ingredients = [
     category: '药食同源',
     form: '花',
     effectCategory: '清热',
+    usage: '泡茶3-5g',
+    selection: '色泽鲜亮、无霉变、香气自然者为佳',
     pairings: [
       { name: '金银花+菊花', desc: '疏风清热，出自《温病条辨》' },
       { name: '金银花+甘草', desc: '清热解毒，出自《本草纲目》' },
@@ -279,6 +303,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '安神',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '百合+莲子', desc: '养心安神，出自《本草纲目》' },
       { name: '百合+银耳', desc: '润肺养阴，出自《饮片新参》' },
@@ -301,6 +327,8 @@ const ingredients = [
     category: '普通食材',
     form: '草',
     effectCategory: '滋阴',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '银耳+百合', desc: '润肺养阴，出自《饮片新参》' },
       { name: '银耳+红枣', desc: '养血润肺，出自《食疗本草》' },
@@ -323,6 +351,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '温阳',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '生姜+红枣', desc: '温中散寒，出自《伤寒论》' },
       { name: '生姜+陈皮', desc: '温中止呕，出自《金匮要略》' },
@@ -345,6 +375,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '补气血',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '党参+黄芪', desc: '补气健脾，出自《脾胃论》' },
       { name: '党参+红枣', desc: '补气养血，出自《食疗本草》' },
@@ -367,6 +399,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '安神',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '莲子+百合', desc: '养心安神，出自《本草纲目》' },
       { name: '莲子+桂圆', desc: '补脾养心，出自《本草备要》' },
@@ -389,6 +423,8 @@ const ingredients = [
     category: '普通食材',
     form: '果',
     effectCategory: '祛湿',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '红豆+薏米', desc: '利水消肿，出自《本草纲目》' },
       { name: '红豆+红枣', desc: '补血利水，出自《食疗本草》' },
@@ -411,6 +447,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '消食',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '山楂+决明子', desc: '消脂通便，出自《本草纲目》' },
       { name: '山楂+陈皮', desc: '消食理气，出自《本草纲目》' },
@@ -433,6 +471,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '补气血',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '甘草+金银花', desc: '清热解毒，出自《本草纲目》' },
       { name: '甘草+菊花', desc: '清热明目，出自《药性论》' },
@@ -455,6 +495,8 @@ const ingredients = [
     category: '药食同源',
     form: '草',
     effectCategory: '清热',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '薄荷+金银花', desc: '疏散风热，出自《温病条辨》' },
       { name: '薄荷+菊花', desc: '疏风清热，出自《温病条辨》' },
@@ -477,6 +519,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '安神',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '酸枣仁+桂圆', desc: '养心安神，出自《金匮要略》' },
       { name: '酸枣仁+百合', desc: '养心安神，出自《本草纲目》' },
@@ -499,6 +543,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '补气血',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '大枣+生姜', desc: '温中散寒，出自《伤寒论》' },
       { name: '大枣+枸杞', desc: '补气养血，出自《食疗本草》' },
@@ -521,6 +567,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '清热',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '罗汉果+菊花', desc: '清肺利咽，出自《岭南采药录》' },
       { name: '罗汉果+金银花', desc: '清热利咽，出自《岭南采药录》' },
@@ -543,6 +591,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '补气血',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '何首乌+枸杞', desc: '补肝肾益精血，出自《本草纲目》' },
       { name: '何首乌+黑芝麻', desc: '乌发养血，出自《本草纲目》' },
@@ -565,6 +615,8 @@ const ingredients = [
     category: '普通食材',
     form: '果',
     effectCategory: '滋阴',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '黑芝麻+何首乌', desc: '乌发养血，出自《本草纲目》' },
       { name: '黑芝麻+核桃', desc: '补肾健脑，出自《本草纲目》' },
@@ -587,6 +639,8 @@ const ingredients = [
     category: '普通食材',
     form: '果',
     effectCategory: '补气血',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '核桃+黑芝麻', desc: '补肾健脑，出自《本草纲目》' },
       { name: '核桃+红枣', desc: '补气养血，出自《食疗本草》' },
@@ -609,6 +663,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '补气血',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '当归+黄芪', desc: '气血双补，出自《内外伤辨惑论》' },
       { name: '当归+红枣', desc: '补血养心，出自《本草纲目》' },
@@ -631,6 +687,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '滋阴',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '白芍+当归', desc: '养血柔肝，出自《和剂局方》' },
       { name: '白芍+甘草', desc: '缓急止痛，出自《伤寒论》' },
@@ -653,6 +711,8 @@ const ingredients = [
     category: '药食同源',
     form: '花',
     effectCategory: '活血',
+    usage: '泡茶3-5g',
+    selection: '色泽鲜亮、无霉变、香气自然者为佳',
     pairings: [
       { name: '红花+当归', desc: '活血调经，出自《本草纲目》' },
       { name: '红花+桃仁', desc: '活血祛瘀，出自《医宗金鉴》' },
@@ -675,6 +735,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '温阳',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '吴茱萸+生姜', desc: '温中止呕，出自《伤寒论》' },
       { name: '吴茱萸+大枣', desc: '温中补虚，出自《伤寒论》' }
@@ -696,6 +758,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '滋阴',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '麦冬+百合', desc: '润肺养阴，出自《本草纲目》' },
       { name: '麦冬+枸杞', desc: '滋阴明目，出自《本草正》' },
@@ -718,6 +782,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '收涩',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '乌梅+甘草', desc: '酸甘化阴，出自《伤寒论》' },
       { name: '乌梅+山楂', desc: '生津消食，出自《本草纲目》' },
@@ -740,6 +806,8 @@ const ingredients = [
     category: '普通食材',
     form: '草',
     effectCategory: '清热',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '绿茶+菊花', desc: '清热明目，出自民间验方' },
       { name: '绿茶+山楂', desc: '消食化积，出自民间验方' }
@@ -761,6 +829,8 @@ const ingredients = [
     category: '普通食材',
     form: '草',
     effectCategory: '温阳',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '红茶+生姜', desc: '温中散寒，出自民间验方' },
       { name: '红茶+红枣', desc: '温中补气，出自民间验方' },
@@ -783,6 +853,8 @@ const ingredients = [
     category: '药食同源',
     form: '花',
     effectCategory: '清热',
+    usage: '泡茶3-5g',
+    selection: '色泽鲜亮、无霉变、香气自然者为佳',
     pairings: [
       { name: '槐花+菊花', desc: '清肝明目，出自《本草纲目》' },
       { name: '槐花+地榆', desc: '凉血止血，出自《本草纲目》' }
@@ -804,6 +876,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '清热',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '橄榄+罗汉果', desc: '利咽润喉，出自民间验方' },
       { name: '橄榄+胖大海', desc: '清热利咽，出自民间验方' }
@@ -825,6 +899,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '清热',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '胖大海+菊花', desc: '清热利咽，出自民间验方' },
       { name: '胖大海+麦冬', desc: '润肺利咽，出自民间验方' },
@@ -847,6 +923,8 @@ const ingredients = [
     category: '药食同源',
     form: '草',
     effectCategory: '滋阴',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '石斛+枸杞', desc: '滋阴明目，出自《本草正》' },
       { name: '石斛+麦冬', desc: '养阴生津，出自《温病条辨》' },
@@ -869,6 +947,8 @@ const ingredients = [
     category: '药食同源',
     form: '草',
     effectCategory: '清热',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '鱼腥草+桔梗', desc: '清热排脓，出自《本草纲目》' },
       { name: '鱼腥草+甘草', desc: '清热解毒，出自民间验方' }
@@ -890,6 +970,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '祛湿',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '白术+党参', desc: '健脾益气，出自《和剂局方》' },
       { name: '白术+茯苓', desc: '健脾渗湿，出自《和剂局方》' },
@@ -912,6 +994,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '祛湿',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '苍术+黄柏', desc: '清热燥湿，出自《丹溪心法》' },
       { name: '苍术+厚朴', desc: '燥湿行气，出自《和剂局方》' }
@@ -933,6 +1017,8 @@ const ingredients = [
     category: '药食同源',
     form: '草',
     effectCategory: '清热',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '枸杞叶+猪肝', desc: '补肝明目，出自民间验方' },
       { name: '枸杞叶+鸡蛋', desc: '补虚益精，出自民间验方' }
@@ -954,6 +1040,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '滋阴',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '桑葚+枸杞', desc: '滋阴补血，出自《本草纲目》' },
       { name: '桑葚+黑芝麻', desc: '补肝肾，出自《本草纲目》' },
@@ -976,6 +1064,8 @@ const ingredients = [
     category: '普通食材',
     form: '花',
     effectCategory: '清热',
+    usage: '泡茶3-5g',
+    selection: '色泽鲜亮、无霉变、香气自然者为佳',
     pairings: [
       { name: '洛神花+山楂', desc: '消食化积，出自民间验方' },
       { name: '洛神花+冰糖', desc: '酸甘化阴，出自民间验方' },
@@ -998,6 +1088,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '活血',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '桃仁+红花', desc: '活血祛瘀，出自《医宗金鉴》' },
       { name: '桃仁+当归', desc: '活血润肠，出自《本草纲目》' }
@@ -1019,6 +1111,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '活血',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '川芎+当归', desc: '活血补血，出自《和剂局方》' },
       { name: '川芎+红花', desc: '活血行气，出自《医宗金鉴》' }
@@ -1040,6 +1134,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '补气血',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '熟地+当归', desc: '补血养肝，出自《和剂局方》' },
       { name: '熟地+枸杞', desc: '补肝肾，出自《本草正》' },
@@ -1062,6 +1158,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '补气血',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '黄精+枸杞', desc: '补气养阴，出自《本草正》' },
       { name: '黄精+党参', desc: '补气健脾，出自《脾胃论》' },
@@ -1084,6 +1182,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '理气',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '枳实+白术', desc: '健脾消痞，出自《金匮要略》' },
       { name: '枳实+厚朴', desc: '行气消满，出自《伤寒论》' }
@@ -1105,6 +1205,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '理气',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '佛手+玫瑰花', desc: '疏肝理气，出自《本草正义》' },
       { name: '佛手+陈皮', desc: '理气化痰，出自《本草纲目》' }
@@ -1126,6 +1228,8 @@ const ingredients = [
     category: '药食同源',
     form: '花',
     effectCategory: '温阳',
+    usage: '泡茶3-5g',
+    selection: '色泽鲜亮、无霉变、香气自然者为佳',
     pairings: [
       { name: '丁香+生姜', desc: '温中降逆，出自《伤寒论》' },
       { name: '丁香+肉桂', desc: '温肾助阳，出自《本草纲目》' }
@@ -1147,6 +1251,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '温阳',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '肉桂+附子', desc: '补火助阳，出自《伤寒论》' },
       { name: '肉桂+丁香', desc: '温肾助阳，出自《本草纲目》' }
@@ -1168,6 +1274,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '补气血',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '红参+黄芪', desc: '大补元气，出自《脾胃论》' },
       { name: '红参+麦冬', desc: '益气养阴，出自《内外伤辨惑论》' },
@@ -1190,6 +1298,8 @@ const ingredients = [
     category: '普通食材',
     form: '果',
     effectCategory: '清热',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '无花果+百合', desc: '润肺止咳，出自民间验方' },
       { name: '无花果+杏仁', desc: '润肺化痰，出自民间验方' }
@@ -1211,6 +1321,8 @@ const ingredients = [
     category: '药食同源',
     form: '果',
     effectCategory: '止咳',
+    usage: '泡茶5-10g，煲汤10-15g',
+    selection: '粒大饱满、色泽自然、无霉变者为佳',
     pairings: [
       { name: '杏仁+百合', desc: '润肺止咳，出自《本草纲目》' },
       { name: '杏仁+桑叶', desc: '疏风润肺，出自《温病条辨》' }
@@ -1232,6 +1344,8 @@ const ingredients = [
     category: '药食同源',
     form: '草',
     effectCategory: '清热',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '桑叶+菊花', desc: '疏风清热，出自《温病条辨》' },
       { name: '桑叶+杏仁', desc: '疏风润肺，出自《温病条辨》' }
@@ -1253,6 +1367,8 @@ const ingredients = [
     category: '药食同源',
     form: '根',
     effectCategory: '温阳',
+    usage: '煲汤10-15g',
+    selection: '质地坚实、断面色白、无虫蛀者为佳',
     pairings: [
       { name: '干姜+甘草', desc: '温中散寒，出自《伤寒论》' },
       { name: '干姜+附子', desc: '回阳救逆，出自《伤寒论》' },
@@ -1275,6 +1391,8 @@ const ingredients = [
     category: '药食同源',
     form: '草',
     effectCategory: '清热',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '竹叶+石膏', desc: '清热除烦，出自《伤寒论》' },
       { name: '竹叶+麦冬', desc: '养阴清热，出自《温病条辨》' }
@@ -1296,6 +1414,8 @@ const ingredients = [
     category: '药食同源',
     form: '草',
     effectCategory: '清热',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: [
       { name: '荷叶+山楂', desc: '消脂化积，出自民间验方' },
       { name: '荷叶+薏米', desc: '清热祛湿，出自民间验方' }
@@ -1317,6 +1437,8 @@ const ingredients = [
     category: '药食同源',
     form: '草',
     effectCategory: '清热',
+    usage: '泡茶3-5g，煲汤5-10g',
+    selection: '色泽翠绿、气味清香、无杂质者为佳',
     pairings: []
   }
 ]

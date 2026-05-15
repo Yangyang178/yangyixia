@@ -172,6 +172,42 @@ const quizQuestions = [
       { text: '匀称适中', scores: { pinghe: 3 } },
       { text: '偏胖，尤其腹部松软', scores: { tanshi: 3, qixu: 1 } }
     ]
+  },
+  {
+    id: 9,
+    question: '你的出汗情况如何？',
+    options: [
+      { text: '稍微活动就容易出汗', scores: { qixu: 3, yangxu: 1 } },
+      { text: '运动后才出汗，很正常', scores: { pinghe: 3 } },
+      { text: '容易盗汗（夜间出汗）', scores: { yinxu: 3, qiyu: 1 } }
+    ]
+  },
+  {
+    id: 10,
+    question: '你的面色更接近哪种？',
+    options: [
+      { text: '偏白或偏黄，没有光泽', scores: { qixu: 2, yangxu: 1 } },
+      { text: '红润有光泽', scores: { pinghe: 3 } },
+      { text: '偏暗或偏红，容易出油', scores: { shire: 2, xueyu: 1 } }
+    ]
+  },
+  {
+    id: 11,
+    question: '你对环境变化的适应能力如何？',
+    options: [
+      { text: '比较敏感，换季容易不舒服', scores: { tebing: 2, qixu: 1 } },
+      { text: '适应力不错，基本没影响', scores: { pinghe: 3 } },
+      { text: '不喜欢闷热潮湿的环境', scores: { shire: 2, tanshi: 1 } }
+    ]
+  },
+  {
+    id: 12,
+    question: '你的情绪状态通常是？',
+    options: [
+      { text: '容易焦虑、多愁善感', scores: { qiyu: 3, xueyu: 1 } },
+      { text: '心态平和，情绪稳定', scores: { pinghe: 3 } },
+      { text: '容易急躁、心烦', scores: { shire: 2, yinxu: 1 } }
+    ]
   }
 ]
 

@@ -6,7 +6,9 @@
     "pages/match/match",
     "pages/quiz/quiz",
     "pages/result/result",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/recipe/recipe",
+    "pages/calendar/calendar"
   ],
   "window": {
     "navigationBarTextStyle": "black",

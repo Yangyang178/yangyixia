@@ -68,8 +68,81 @@
   color: var(--text-hint);
 }
 
+.hot-search {
+  padding: 0 28rpx;
+  margin-bottom: 24rpx;
+}
+
+.hot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.hot-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.hot-tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hot-tag {
+  background: var(--bg-grey);
+  border-radius: 24rpx;
+  padding: 10rpx 24rpx;
+  font-size: 24rpx;
+  margin: 0 12rpx 12rpx 0;
+  color: var(--text-secondary);
+}
+
 .category-section {
   margin-bottom: 32rpx;
+}
+
+.season-section {
+  padding: 0 28rpx;
+  margin-bottom: 28rpx;
+}
+
+.season-desc {
+  font-size: 22rpx;
+  color: var(--text-hint);
+}
+
+.season-tip {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 16rpx;
+  padding-left: 4rpx;
+}
+
+.season-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.season-ing-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.season-ing-image {
+  width: 88rpx;
+  height: 88rpx;
+  margin-bottom: 8rpx;
+}
+
+.season-ing-name {
+  font-size: 22rpx;
+  color: var(--text-primary);
 }
 
 .section-header {
@@ -160,6 +233,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.grid-real-image {
+  width: 100%;
+  height: 100%;
 }
 
 .hot-name {
