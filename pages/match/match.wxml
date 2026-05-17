@@ -7,27 +7,25 @@
       <text class="intro-desc">模拟"今天想泡这个茶"的操作</text>
     </view>
 
-    <view class="selected-section" wx:if="{{selectedIngredients.length > 0}}">
-      <view class="section-header">
-        <text class="section-title">已选食材（{{selectedIngredients.length}}/5）</text>
-        <text class="clear-btn" bindtap="clearAll">清空</text>
-      </view>
-      <scroll-view class="selected-scroll" scroll-x>
-        <view class="selected-list">
-          <view class="selected-item" wx:for="{{selectedIngredients}}" wx:key="id">
-            <view class="selected-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
-            <text class="selected-name">{{item.name}}</text>
-            <view class="selected-remove" bindtap="removeIngredient" data-index="{{index}}">✕</view>
-          </view>
-        </view>
-      </scroll-view>
-    </view>
-
     <view class="search-section">
       <view class="search-input-wrap">
         <text class="search-icon">🔍</text>
         <input class="search-input" placeholder="搜索食材添加…"
                value="{{keyword}}" bindinput="onInput" />
+      </view>
+    </view>
+
+    <view class="selected-section" wx:if="{{selectedIngredients.length > 0}}">
+      <view class="section-header">
+        <text class="section-title">已选食材（{{selectedIngredients.length}}/5）</text>
+        <text class="clear-btn" bindtap="clearAll">清空</text>
+      </view>
+      <view class="selected-list">
+        <view class="selected-item" wx:for="{{selectedIngredients}}" wx:key="id">
+          <view class="selected-image emoji-card" style="background: {{item.color}}"><text class="emoji-text-sm">{{item.emoji}}</text></view>
+          <text class="selected-name">{{item.name}}</text>
+          <view class="selected-remove" bindtap="removeIngredient" data-index="{{index}}">✕</view>
+        </view>
       </view>
     </view>
 

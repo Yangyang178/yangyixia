@@ -44,15 +44,68 @@ Page({
         String(date.getDate()).padStart(2, '0') + ' ' +
         String(date.getHours()).padStart(2, '0') + ':' +
         String(date.getMinutes()).padStart(2, '0')
-      return Object.assign({}, item, { timeStr })
+      var ingredientStr = ''
+      if (item.ingredients && item.ingredients.length > 0) {
+        ingredientStr = item.ingredients.join(' + ')
+      }
+      return Object.assign({}, item, { timeStr, ingredientStr })
     })
     this.setData({ savedMatches })
   },
 
   deleteMatch(e) {
     const index = e.currentTarget.dataset.index
-    storage.removeMatch(index)
-    this.loadSavedMatches()
+    wx.showModal({
+      title: '删除方案',
+      content: '确定要删除这个搭配方案吗？',
+      confirmColor: '#E17055',
+      confirmText: '删除',
+      success: function(res) {
+        if (res.confirm) {
+          storage.removeMatch(index)
+          this.loadSavedMatches()
+        }
+      }.bind(this)
+    })
+  },
+
+  viewMatch(e) {
+    const index = e.currentTarget.dataset.index
+    const match = this.data.savedMatches[index]
+    if (!match) return
+
+    var content = '食材：' + match.ingredients.join(' + ') + '\n\n'
+
+    if (match.matchResult) {
+      if (match.matchResult.good && match.matchResult.good.length > 0) {
+        content += '✅ 协同增效：' + match.matchResult.good.join('、') + '\n\n'
+      }
+      if (match.matchResult.caution && match.matchResult.caution.length > 0) {
+        content += '⚠️ 需注意：' + match.matchResult.caution.join('、') + '\n\n'
+      }
+      if (match.matchResult.bad && match.matchResult.bad.length > 0) {
+        content += '❌ 不建议搭配：' + match.matchResult.bad.join('、') + '\n\n'
+      }
+    }
+
+    if (match.constitutionMatch) {
+      content += '体质匹配：' + (match.constitutionMatch.match ? '✅ 适合' : '⚠️ 需注意') + '\n'
+      if (match.constitutionMatch.reason) {
+        content += match.constitutionMatch.reason + '\n'
+      }
+    }
+
+    if (match.recommendedRecipes && match.recommendedRecipes.length > 0) {
+      content += '\n🍵 推荐茶饮：' + match.recommendedRecipes.map(function(r) { return r.name }).join('、')
+    }
+
+    wx.showModal({
+      title: '搭配方案详情',
+      content: content,
+      showCancel: false,
+      confirmText: '知道了',
+      confirmColor: '#5B8C5A'
+    })
   },
 
   goQuiz() {

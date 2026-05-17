@@ -45,10 +45,10 @@
     <view class="menu-section">
       <view class="section-title">我的搭配方案</view>
       <view class="match-list" wx:if="{{savedMatches.length > 0}}">
-        <view class="match-item card" wx:for="{{savedMatches}}" wx:key="index">
+        <view class="match-item card" wx:for="{{savedMatches}}" wx:key="index" bindtap="viewMatch" data-index="{{index}}">
           <view class="match-item-header">
-            <text class="match-item-names">{{item.ingredients.join(' + ')}}</text>
-            <text class="match-item-del" bindtap="deleteMatch" data-index="{{index}}">删除</text>
+            <text class="match-item-names">{{item.ingredientStr}}</text>
+            <text class="match-item-del" catchtap="deleteMatch" data-index="{{index}}">删除</text>
           </view>
           <text class="match-item-time">{{item.timeStr}}</text>
         </view>
